@@ -8,7 +8,7 @@ define('WWW_BASE_PATH', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 // Include and configure the LighVC framework
 // Autoloader(add class paths for external libraries)
 include_once(APP_PATH . 'modules/Lvc_Autoloader.class.php');
-Lvc_Autoloader::addClassPath(APP_PATH . 'modules/lightvc/');
+Lvc_Autoloader::addClassPath(APP_PATH . 'modules/');
 Lvc_Autoloader::setCacheFilePath('/tmp/lvc_class_cache.txt');
 spl_autoload_register(array('Lvc_Autoloader', 'loadClass'));
 
@@ -31,11 +31,6 @@ $aux = Lvc_Session::getInstance();
 
 
 /* App configuration */
-//EngranajeCMS
-Lvc_Autoloader::addClassPath(APP_PATH . 'modules/cough/');
-Lvc_Autoloader::addClassPath(APP_PATH . 'modules/model/');
-Lvc_Autoloader::addClassPath(APP_PATH . 'modules/form/');
-
 //DB Parameters
 CoughDatabaseFactory::addConfig(array(
 			'adapter' => 'as',
