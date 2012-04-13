@@ -25,6 +25,9 @@
 
             <div id="wrap">
                 <div id="main_content">
+                    <ul>
+                        <li><a href="<?php echo Lvc::url('post') ?>">Post</a></li>
+                    </ul>
                     <div>
                         <h2><?php echo $pageTitle ?></h2>
                         <?php echo $layoutContent ?>

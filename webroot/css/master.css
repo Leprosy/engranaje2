@@ -21,6 +21,7 @@ hr {
     height: 1px;
     background-color: #CCC;
 }
+
 /* Layout */
 #page {
     width: 1000px;
@@ -55,4 +56,19 @@ hr {
 div.error {
     background-color: #fed1d1;
     border: 2px solid #FF0000;
+}
+
+div.message {
+    background-color: #fefbb5;
+    border: 2px solid #fec94a;
+}
+
+
+table.data {
+    border: 1px solid #ccc;
+}
+
+table.data th {
+    text-align: center;
+    font-weight: bold;
 }

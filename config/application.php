@@ -40,3 +40,5 @@ CoughDatabaseFactory::addConfig(array(
 			'pass' => 'leprosy',
 			'aliases' => array('engranaje2'),
 		));
+
+define('ENG_PAGESIZE', 3);
