@@ -17,7 +17,7 @@ $this->setLayoutVar('pageTitle', 'Contenido');
         <?php foreach ($posts as $post) : ?>
         <tr>
             <?php foreach ($post->getFields() as $data) : ?>
-            <td><?php echo $data ?></td>
+            <td><?php echo $data ?> <?php var_dump($post->getUser_Object()->getLogin()) ?></td>
             <?php endforeach; ?>
             <td>
                 <a href="<?php echo Lvc::url('post/edit/' . $post->getId()) ?>">Edit</a> - 

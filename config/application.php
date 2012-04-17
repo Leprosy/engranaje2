@@ -4,19 +4,18 @@
 define('APP_PATH', dirname(dirname(__FILE__)) . '/');
 define('APP_ENV', 'dev');
 define('WWW_BASE_PATH', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
+define('CLASS_PATH', APP_PATH . 'lib/');
 
 // Include and configure the LighVC framework
 // Autoloader(add class paths for external libraries)
-include_once(APP_PATH . 'modules/Lvc_Autoloader.class.php');
-Lvc_Autoloader::addClassPath(APP_PATH . 'modules/');
-Lvc_Autoloader::setCacheFilePath('/tmp/lvc_class_cache.txt');
-spl_autoload_register(array('Lvc_Autoloader', 'loadClass'));
+include_once(APP_PATH . 'lib/Autoloader.php');
+spl_autoload_register(array('Autoloader', 'loadClass'));
 
-Lvc_Config::addControllerPath(APP_PATH . 'controllers/');
-Lvc_Config::addControllerViewPath(APP_PATH . 'views/');
-Lvc_Config::addLayoutViewPath(APP_PATH . 'views/layouts/');
-Lvc_Config::addElementViewPath(APP_PATH . 'views/elements/');
-Lvc_Config::setViewClassName('AppView');
+Eng_Config::addControllerPath(APP_PATH . 'controllers/');
+Eng_Config::addControllerViewPath(APP_PATH . 'views/');
+Eng_Config::addLayoutViewPath(APP_PATH . 'views/layouts/');
+Eng_Config::addElementViewPath(APP_PATH . 'views/elements/');
+Eng_Config::setViewClassName('AppView');
 
 // Lvc doesn't autoload the AppController, so we have to do it: (this also means we can put it anywhere)
 include(APP_PATH . 'classes/AppController.class.php');
@@ -26,19 +25,9 @@ include(APP_PATH . 'classes/AppView.class.php');
 include(dirname(__FILE__) . '/routes.php');
 
 //Session
-$aux = Lvc_Session::getInstance();
+$aux = Eng_Session::getInstance();
 
 
 
 /* App configuration */
-//DB Parameters
-CoughDatabaseFactory::addConfig(array(
-			'adapter' => 'as',
-			'driver' => 'mysql',
-			'host' => '127.0.0.1',
-			'user' => 'root',
-			'pass' => 'leprosy',
-			'aliases' => array('engranaje2'),
-		));
-
 define('ENG_PAGESIZE', 3);
