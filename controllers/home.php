@@ -15,14 +15,23 @@ class HomeController extends AppController {
         /*$tmp = NodeTable::getInstance();
         var_dump($tmp); die(); */
         
-        $node = new Node();
+        $tmp = Doctrine_Query::create()
+                ->from('Db_Node n')
+                ->leftJoin('n.Db_User u');
+                //->where('n.id = ?', 1);
+//var_dump( $tmp->execute()->toArray() );
+
+
+$form = new Form_Node();
+echo $form;
+
         die('ok');
     }
     
     public function actionTest() {
         $conn = Doctrine_Manager::connection('mysql://root:leprosy@localhost/engranaje2', 'doctrine');
         Doctrine_Core::generateModelsFromDb(
-            Lvc::path('modules/model'),
+            Eng::path('doc/'),
             array('doctrine'),
             array('generateTableClasses' => true)
         );

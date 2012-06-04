@@ -1,7 +1,5 @@
 <?php
 
-include(__DIR__ . '/Eng_FormElement.class.php');
-
 /**
  * A Form rendering and validation object
  * 
@@ -87,9 +85,6 @@ class Eng_Form {
     public function bind($data = false) {
         if ($data) {
             foreach ($this->elements as $element) {
-                /*if (isset($data[$element->getName()])) {
-                    $element->setValue($data[$element->getName()]);
-                }*/
                 $element->setValue($data);
             }
         }

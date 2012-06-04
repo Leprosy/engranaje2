@@ -24,7 +24,7 @@ Doctrine_Manager::getInstance()->bindComponent('Node', 'doctrine');
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-abstract class BaseNode extends Doctrine_Record
+class Db_Node extends Doctrine_Record
 {
     public function setTableDefinition()
     {
@@ -128,6 +128,10 @@ abstract class BaseNode extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        
+
+        $this->hasOne('Db_User', array(
+            'local' => 'user_id',
+            'foreign' => 'id'
+        ));
     }
 }

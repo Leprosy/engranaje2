@@ -1,0 +1,433 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup,sub{line-height:-1px;vertical-align:text-top;}sub{vertical-align:text-bottom;}input, textarea, select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+
+            body {
+                font-family: arial, sans;
+                font-size: 0.9em;
+                background-color:#6399e5;
+            }
+            
+            .wrap {
+                width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            header {
+                height: 50px;
+                background-color: #fff;
+                box-shadow: 0px 1px 8px #555;
+                border-bottom: 1px solid #333;
+                
+                /* !! */
+                background-image: linear-gradient(top, #FFFFFF 25%, #EEEEEE 100%);
+                background-image: -o-linear-gradient(top, #FFFFFF 25%, #EEEEEE 100%);
+                background-image: -moz-linear-gradient(top, #FFFFFF 25%, #EEEEEE 100%);
+                background-image: -webkit-linear-gradient(top, #FFFFFF 25%, #EEEEEE 100%);
+                background-image: -ms-linear-gradient(top, #FFFFFF 25%, #EEEEEE 100%);
+
+                background-image: -webkit-gradient(
+                        linear,
+                        left top,
+                        left bottom,
+                        color-stop(0.25, #FFFFFF),
+                        color-stop(1, #EEEEEE)
+                );
+                overflow: auto;
+            }
+            header h1 {
+                font-weight: bold;
+                font-size: 160%;
+                margin-top: 10px;
+                text-shadow: 2px 2px 0px #fff;
+            }
+
+            section#apps {
+                -webkit-border-radius: 0 0 8px 8px;
+                -moz-border-radius: 0 0 8px 8px;
+                border-radius: 0 0 8px 8px;
+                background-color: #FFF;
+                box-shadow: 0px 1px 2px #000;
+                
+                position: relative;
+                z-index: -1;
+            }
+            section#main {
+                margin-top: 10px;
+                margin-bottom: 120px;
+                padding-bottom: 10px;
+                overflow: auto;
+            }
+            section#main .block, section#main .block.left, section#main .block.right {
+                -webkit-border-radius: 8px;
+                -moz-border-radius: 8px;
+                border-radius: 8px;
+                background-color: #fff;
+                box-shadow: 0px 1px 2px #000;
+                
+                width: 960px;
+                padding: 20px;
+                margin-top: 10px;
+                float: left;
+                
+                color: #333;
+            }
+            section#main .block.left {
+                width: 610px;
+                margin-right: 10px;
+            }
+            section#main .block.right {
+                float: right;
+                width: 300px;
+            }
+            section#main .block h2 {
+                font-size: 140%;
+                margin-bottom: 15px;
+                color: #555;
+                font-family: Georgia, serif;
+            }
+            section#main p {
+                margin-bottom: 10px;
+            }
+
+            footer {
+                margin-top: 10px;
+                background-color: #fff;
+                height: 120px;
+            }
+
+            table {
+                -webkit-border-radius: 6px;
+                -moz-border-radius: 6px;
+                border-radius: 6px;
+                font-size: 1em;
+                width: 100%;
+                border: 1px solid #AAA;
+                box-shadow: 0px 2px 6px #ccc;
+                border-collapse: separate;
+                margin-bottom: 10px;
+            }
+            table thead tr {
+                height: 40px;
+                background-color: #eeeeff;
+                color: #21759b;
+                text-shadow: 1px 2px 1px #fff;
+            }
+            table tbody tr {
+                height: 32px;
+                background-color: #fafafa;
+            }
+            table tbody td {
+                border-top: 1px solid white;
+                border-bottom: 1px solid #ccc;
+            }
+            table th {
+                font-weight: bold;
+                text-align: center;
+                padding: 8px 20px;
+                border-bottom: 1px solid #ccc;
+            }
+            table td {
+                text-align: center;
+            }
+            table tfoot .meta {
+                font-size: 80%;
+                font-style: italic;
+                padding: 10px 0;
+            }
+            table img {
+                border: none;
+            }
+
+            /* Stylish */
+            .error, .info {
+                padding: 10px 10px 10px 60px;
+                box-shadow: 0px 1px 4px #aaa;
+                min-height: 30px;
+                margin-bottom: 10px;
+            }
+            .error p, .info p {
+                margin-top: 1%;
+            }
+            .error {
+                border: 1px solid #ff9999;
+                background: #ffcdcd url(images/icons/big_error.png) no-repeat 10px center;
+            }
+            .info {
+                border: 1px solid #ffff99;
+                background: #ffffcd url(images/icons/big_info.png) no-repeat 10px center;
+            }
+            
+            .pager {
+                font-size: 90%;
+                text-align: center;
+                padding: 4px;
+            }
+            
+            a {
+                color: #21759b;
+            }
+            a:hover {
+                color: #6399e5;
+            }
+            a:active {
+                color: #006;
+            }
+            
+            form label {
+                display: block;
+            }
+            
+            form .form_error {
+                float: right;
+                color: #b30000;
+                font-size: 80%;
+            }
+
+            form input, textarea {
+                border: 1px solid #aaa;
+                outline: none;
+                box-shadow: inset 0 1px 3px #ccc;
+                padding: 0 5px;
+            }
+            
+            form input {
+                height: 28px;
+            }
+            
+            .button, .big-button, .button_cancel {
+                font-weight: bold;
+
+                background-image: linear-gradient(bottom, #227091 20%, #2A8EBD 49%);
+                background-image: -o-linear-gradient(bottom, #227091 20%, #2A8EBD 49%);
+                background-image: -moz-linear-gradient(bottom, #227091 20%, #2A8EBD 49%);
+                background-image: -webkit-linear-gradient(bottom, #227091 20%, #2A8EBD 49%);
+                background-image: -ms-linear-gradient(bottom, #227091 20%, #2A8EBD 49%);
+
+                background-image: -webkit-gradient(
+                        linear,
+                        left bottom,
+                        left top,
+                        color-stop(0.2, #227091),
+                        color-stop(0.49, #2A8EBD)
+                );
+
+                color: #fff;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                box-shadow: 0px 2px 2px #000;
+                display: inline-block;
+                height: 28px;
+                padding: 2px 20px;
+                border: 1px solid #000;
+                text-shadow: 0 1px 2px #000;
+                
+                position: relative;
+                top: -2px;
+            }   
+            
+            .button_cancel {
+                background-image: linear-gradient(bottom, #B30000 20%, #FF0000 52%);
+                background-image: -o-linear-gradient(bottom, #B30000 20%, #FF0000 52%);
+                background-image: -moz-linear-gradient(bottom, #B30000 20%, #FF0000 52%);
+                background-image: -webkit-linear-gradient(bottom, #B30000 20%, #FF0000 52%);
+                background-image: -ms-linear-gradient(bottom, #B30000 20%, #FF0000 52%);
+
+                background-image: -webkit-gradient(
+                        linear,
+                        left bottom,
+                        left top,
+                        color-stop(0.2, #B30000),
+                        color-stop(0.52, #FF0000)
+                );
+            }
+            
+            .big-button {
+                height: 52px;
+                font-size: 130%;
+                padding: 2px 40px;
+            }
+            
+            .button:active, .button_cancel:active, .big-button:active {
+                background-image: none;
+                background-color: #15445a;
+                box-shadow: none;
+                top: 0;
+            }
+            
+            .button_cancel:active {
+                background-color: #850303;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="wrap">
+                <h1>Titulo</h1>
+            </div>
+        </header>
+
+        <!-- <section id="apps" class="wrap">
+            <p>Apps, apps everywhere... </p>
+        </section> -->
+
+        <section id="main" class="wrap">
+            <div class="block">
+                <h2>Titulo del block</h2>
+                <div class="info"><p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p></div>
+                <div class="error"><p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p></div>
+                <p>Entre las novedades más importantes está el agregado de un nuevo modo de espectador para partidas privadas, "ideal para transmisiones de partidas de liga", como dicen los de Epic. Con este modo se podrá agregar un observador por equipo, y las partidas estarán limitadas a cuatro jugadores por lado. También hay unos cuantos ajustes generales para con las medallas, desconexiones o cambios de host (ahora al haber un cambio en el modo horda, el juego se reanuda en la oleada actual), y ya no se va a repetir un mapa si es que se elige la opción randome en una partida text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Some text bla bla lba <blink>lbla<blink> baj <marquee>dsfnuwebi</marquee> uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Para volver al home <a href="#">Click acá</a></p>
+                <p>Para volver al home <a href="#">Click acá</a></p>
+                <form>
+                    <input type="text" /> <input type="button" value="Ingresar" class="button" /> <input type="button" value="Eliminar registro..." class="button_cancel" /><br /><br />
+                    <input type="checkbox" /> Hello<br /><br />
+                    <input type="radio" /> Hello<br /><br />
+                    <textarea cols="30" rows="10"></textarea><br/><br />
+                    <input type="text" /><br /><br /><input type="button" value="Ingresar" class="big-button" />
+                </form><br />
+                
+                <hr/>
+                
+<form action="" method="post" name="node_form" id="node_form"><input type="hidden" value="" name="id" id="id"><input type="hidden" value="" name="user_id" id="user_id"><p><label for="slug">slug</label> <input size="32" type="text" value="" name="slug" id="slug"><small></small></p><p><label for="created_at">created_at</label> <input size="32" type="text" value="" name="created_at" id="created_at"><small></small></p><p><label for="status">status</label> <input size="4" type="text" value="" name="status" id="status"><small></small></p><p class="form_error">Esto esta como el forro</p><p><label for="title">content_title</label> <input size="32" type="text" value="" name="title" id="title"><small>Este es el tÃ­tulo del contenido</small></p><p><label for="content">content</label> <textarea cols="60" rows="20" name="content" id="content"></textarea><small></small></p><p><label for="description">description</label> <textarea cols="60" rows="10" name="description" id="description"></textarea><small></small></p><input class="submit" type="submit"></form>
+                
+                <hr />
+                <p>Para volver al home <a href="#">Click acá</a></p>
+                
+                <div class="pager">
+                    <a href="">Inicio</a>
+                    <a href="">Anterior</a>
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                    <a href="">Siguiente</a>
+                    <a href="">Ultimo</a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Item</th>
+                            <th>Item</th>
+                            <th>Item</th>
+                            <th>Item</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>234</td>
+                            <td>Titulo del item</td>
+                            <td>01 de Abril</td>
+                            <td>Entre las novedades más importantes</td>
+                            <td>Publicado</td>
+                            <td>
+                                <a href="#"><img src="images/icons/mini_edit.png"></a>
+                                <a href="#"><img src="images/icons/mini_delete.png"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>234</td>
+                            <td>Titulo del item</td>
+                            <td>01 de Abril</td>
+                            <td>Entre las novedades más importantes</td>
+                            <td>Publicado</td>
+                            <td>
+                                <a href="#"><img src="images/icons/mini_edit.png"></a>
+                                <a href="#"><img src="images/icons/mini_delete.png"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>234</td>
+                            <td>Titulo del item</td>
+                            <td>01 de Abril</td>
+                            <td>Entre las novedades más importantes</td>
+                            <td>Publicado</td>
+                            <td>
+                                <a href="#"><img src="images/icons/mini_edit.png"></a>
+                                <a href="#"><img src="images/icons/mini_delete.png"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>234</td>
+                            <td>Titulo del item</td>
+                            <td>01 de Abril</td>
+                            <td>Entre las novedades más importantes</td>
+                            <td>Publicado</td>
+                            <td>
+                                <a href="#"><img src="images/icons/mini_edit.png"></a>
+                                <a href="#"><img src="images/icons/mini_delete.png"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>234</td>
+                            <td>Titulo del item</td>
+                            <td>01 de Abril</td>
+                            <td>Entre las novedades más importantes</td>
+                            <td>Publicado</td>
+                            <td>
+                                <a href="#"><img src="images/icons/mini_edit.png"></a>
+                                <a href="#"><img src="images/icons/mini_delete.png"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="meta" colspan="6">
+                                123 items
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+                <div class="pager">
+                    <a href="">Inicio</a>
+                    <a href="">Anterior</a>
+                    <a href="">1</a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                    <a href="">Siguiente</a>
+                    <a href="">Ultimo</a>
+                </div>
+            </div>
+            
+            <div class="block left">
+                <h2>Titulo del block</h2>
+                <div class="info"><p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p></div>
+                <div class="error"><p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p></div>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+            </div>
+            
+            <div class="block right">
+                <h2>Titulo del block</h2>
+                <div class="info"><p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p></div>
+                <div class="error"><p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p></div>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+            </div>
+            
+            <div class="block">
+                <h2>Titulo del block</h2>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+                <p>Some text bla bla lba lbla baj dsfnuwebi uwei nefin weineriufnrweif nkwrejfnrew</p>
+            </div>
+        </section>
+
+        <footer>
+
+        </footer>
+    </body>
+</html>

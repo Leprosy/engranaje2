@@ -16,7 +16,6 @@ class Autoloader {
     public static function loadClass($className) {
         $auxpath  = str_replace('_', '/', $className);
         $filePath =  CLASS_PATH . $auxpath . '.php';
-        var_dump($filePath);
 
         if (file_exists($filePath)) {
             include($filePath);

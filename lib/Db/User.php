@@ -20,7 +20,7 @@ Doctrine_Manager::getInstance()->bindComponent('User', 'doctrine');
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-abstract class BaseUser extends Doctrine_Record
+class Db_User extends Doctrine_Record
 {
     public function setTableDefinition()
     {

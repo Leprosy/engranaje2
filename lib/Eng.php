@@ -7,7 +7,7 @@
  * @since 2012-01-11
  **/
 
-class Lvc {
+class Eng {
     
     /**
      * Return an url, relative to the application in the LVC app.
