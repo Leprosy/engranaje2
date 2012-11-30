@@ -1,5 +1,4 @@
 <?php
-
 class HomeController extends AppController {
 
     protected function beforeAction() {
@@ -11,31 +10,9 @@ class HomeController extends AppController {
     }
 
     public function actionIndex() { 
-        $conn = Doctrine_Manager::connection('mysql://root:leprosy@localhost/engranaje2', 'doctrine');
-        /*$tmp = NodeTable::getInstance();
-        var_dump($tmp); die(); */
-        
-        $tmp = Doctrine_Query::create()
-                ->from('Db_Node n')
-                ->leftJoin('n.Db_User u');
-                //->where('n.id = ?', 1);
-//var_dump( $tmp->execute()->toArray() );
-
-var_dump($conn);
-$form = new Form_Node();
-echo $form;
-
-        die('ok');
+		global $Eng_Db;
+		
+		var_dump($Eng_Db);
+		$form = new Form_Node();
     }
-    
-    public function actionTest() {
-        $conn = Doctrine_Manager::connection('mysql://root:leprosy@localhost/engranaje2', 'doctrine');
-        Doctrine_Core::generateModelsFromDb(
-            Eng::path('doc/'),
-            array('doctrine'),
-            array('generateTableClasses' => true)
-        );
-        die('ok');
-    }
-
 }

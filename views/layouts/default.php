@@ -5,28 +5,28 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>test - <?php echo $pageTitle ?></title>
-        <link rel="stylesheet" href="<?php echo Lvc::url('css/master.css') ?>" type="text/css" media="all" charset="utf-8" />
+        <link rel="stylesheet" href="<?php echo Eng::url('css/master.css') ?>" type="text/css" media="all" charset="utf-8" />
 
         <!-- admin -->
-        <script src="<?php echo Lvc::url('js/admin.js') ?>"></script>
+        <script src="<?php echo Eng::url('js/admin.js') ?>"></script>
 
         <!-- jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
         <!-- Ketchup form validator -->
-        <script src="<?php echo Lvc::url('js/ketchup/jquery.ketchup.all.min.js') ?>"></script>
+        <script src="<?php echo Eng::url('js/ketchup/jquery.ketchup.all.min.js') ?>"></script>
     </head>
     <body>
 
         <div id="page">
             <div id="header">
-                <h1><a href="<?php echo Lvc::url() ?>">testing_cms</a></h1>
+                <h1><a href="<?php echo Eng::url() ?>">testing_cms</a></h1>
             </div>
 
             <div id="wrap">
                 <div id="main_content">
                     <ul>
-                        <li><a href="<?php echo Lvc::url('post') ?>">Post</a></li>
+                        <li><a href="<?php echo Eng::url('post') ?>">Post</a></li>
                     </ul>
                     <div>
                         <h2><?php echo $pageTitle ?></h2>
@@ -59,7 +59,7 @@
         </div>
 
         <script>        
-            <?php $aux = Lvc_Session::getInstance(); if ($message = $aux->getFlash('message')) : ?>
+            <?php $aux = Eng_Session::getInstance(); if ($message = $aux->getFlash('message')) : ?>
             message_info('<?php echo $message ?>');
             <?php endif; ?>
             <?php if ($message = $aux->getFlash('error')) : ?>

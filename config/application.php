@@ -24,3 +24,6 @@ include(dirname(__FILE__) . '/routes.php');
 
 /* Start user session */
 $aux = Eng_Session::getInstance();
+
+/* Db Connection*/
+$Eng_Db = new NotORM(new PDO('mysql:dbname=engranaje2;host=127.0.0.1', 'root', 'leprosy'));

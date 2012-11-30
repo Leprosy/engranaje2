@@ -73,5 +73,3 @@ class ErrorController extends AppController
 	}
 	
 }
-
-?>
