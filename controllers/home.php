@@ -21,7 +21,7 @@ class HomeController extends AppController {
                 //->where('n.id = ?', 1);
 //var_dump( $tmp->execute()->toArray() );
 
-
+var_dump($conn);
 $form = new Form_Node();
 echo $form;
 

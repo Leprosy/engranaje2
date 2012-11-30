@@ -13,7 +13,7 @@ class Eng_Session {
     protected $namespace;
     static protected $instance = null;
 
-    public static function getInstance($cookieName = 'PHP_SESS_ID', $namespace = 'LVC') {
+    public static function getInstance($cookieName = 'PHP_SESS_ID', $namespace = 'ENG') {
         if (is_null(self::$instance)) {
             self::$instance = new Eng_Session($cookieName, $namespace);
         }

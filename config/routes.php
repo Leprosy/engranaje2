@@ -37,5 +37,3 @@ $regexRoutes = array(
 	),
 	
 );
-
-?>
