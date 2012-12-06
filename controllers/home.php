@@ -12,7 +12,7 @@ class HomeController extends AppController {
     public function actionIndex() { 
 		global $Eng_Db;
 		
-		var_dump($Eng_Db);
+		var_dump($Eng_Db->Node());
 		$form = new Form_Node();
     }
 }
