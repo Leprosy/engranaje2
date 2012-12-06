@@ -1,2 +1,4 @@
 <?php
-echo $posts;
+while ($row = $posts->fetch()) {
+	var_dump($row->toArray());
+}

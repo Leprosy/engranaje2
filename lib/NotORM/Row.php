@@ -176,5 +176,11 @@ class NotORM_Row extends NotORM_Abstract implements IteratorAggregate, ArrayAcce
 		unset($this->row[$key]);
 		unset($this->modified[$key]);
 	}
-	
+
+	/** Return data as array
+	* @return array
+	*/
+	function toArray() {
+	    return $this->row;
+	}
 }

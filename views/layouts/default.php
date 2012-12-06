@@ -1,1 +1,1 @@
-<?php echo json_encode($layoutContent) ?>
+<?php echo $layoutContent ?>
