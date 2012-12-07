@@ -1,6 +1,0 @@
-<?php
-class node {
-    function index() {
-        var_dump('cool');
-    }
-}
