@@ -53,8 +53,7 @@ class node {
 
             echo json_encode($result);
         } else {
-            die('{oaw}');
-            //Server::sendHttpCode(404);
+            Server::sendHttpCode(404);
         }
     }
 }
