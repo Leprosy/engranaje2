@@ -20,7 +20,8 @@ try {
         throw new Exception('module_not_found ' . $module);
     }
 
-    $action = strtolower(ENG_REQUEST_METHOD) . '_' . (isset($_GET['action']) ? $_GET['action'] : 'index');
+    $action = strtolower(ENG_REQUEST_METHOD) . '_' .
+              (isset($_GET['action']) ? $_GET['action'] : 'index');
 
     if (class_exists($module, true)) {
         $M = new $module();

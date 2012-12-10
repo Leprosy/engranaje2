@@ -15,6 +15,7 @@ class Server {
                             ENG_DBHOST,
                             ENG_DBNAME),
                             ENG_DBUSER, ENG_DBPASS);
+            $pdo->exec("set names utf8");
             self::$db = new NotORM($pdo);
         }
 
