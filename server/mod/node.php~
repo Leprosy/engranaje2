@@ -1,7 +1,7 @@
 <?php
 class node {
     function predispatch() {
-        header('Content-type: application/json');
+        //header('Content-type: application/json');
     }
 
     function postdispatch() {}

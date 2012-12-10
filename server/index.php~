@@ -7,7 +7,6 @@ define('ENG_DBHOST', 'localhost');
 define('ENG_DBUSER', 'root');
 define('ENG_DBPASS', 'leprosy');
 define('ENG_DBNAME', 'eng2');
-define('ENG_PAGELIMIT', 20);
 
 include(ENG_APP_PATH . 'lib/Autoloader.php');
 spl_autoload_register(array('Autoloader', 'loadClass'));
