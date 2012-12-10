@@ -10,13 +10,14 @@ class node {
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $id = isset($_GET['id']) ? $_GET['id'] : false;
         $term = isset($_GET['term']) ? $_GET['term'] : false;
+        $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : ENG_PAGELIMIT;
 
         $db = Server::getDb();
         $nodes = $db->node()
                     ->where('status', 'published')
                     ->where('node.published_at <= ?', date('Y-m-d H:i:s'))
                     ->order('node.published_at DESC')
-                    ->limit(ENG_PAGELIMIT, ENG_PAGELIMIT * ($page - 1));
+                    ->limit($limit, $limit * ($page - 1));
 
         if ($id) {
             if (is_numeric($id)) {
