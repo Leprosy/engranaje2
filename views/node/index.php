@@ -1,4 +1,8 @@
 <?php
+$result = array();
+
 while ($row = $posts->fetch()) {
-	var_dump($row->toArray());
+	$result[] = $row->toArray();
 }
+
+echo json_encode($result);
