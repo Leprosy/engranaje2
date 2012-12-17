@@ -5,15 +5,15 @@
         <title>Leprosystems. This is Leprosystems.com</title>    
         <meta name="description" content="aplicaciones, codigo fuente, dibujo, escritos, musica" />
         <meta name="author" content="Miguel Rojas" />
-        <link href="<?php echo $base_url ?>style.css" rel="stylesheet" />
-        <script src="<?php echo $base_url ?>edjs/edward.js"></script>
-        <script src="<?php echo $base_url ?>jquery.js"></script>
+        <link href="<?php echo BASE_URL ?>style.css" rel="stylesheet" />
+        <script src="<?php echo BASE_URL ?>edjs/edward.js"></script>
+        <script src="<?php echo BASE_URL ?>jquery.js"></script>
     </head>
 
     <body>
 
         <header>
-            <h1><a href="<?php echo $base_url ?>">LEPR0SYSTEMS</a></h1>
+            <h1><a href="<?php echo BASE_URL ?>">LEPR0SYSTEMS</a></h1>
             <h2>QUIQUID LATINE DICTUM SIT ALTUM VIDITUR</h2>
         </header>
 
@@ -22,28 +22,28 @@
         <section id="content" class="inside_not">
             <article class="development">
                 <div>
-                    <h2><a href="<?php echo $base_url ?>term/desarrollo">Desarrollo</a></h2>
+                    <h2><a href="<?php echo BASE_URL ?>term/desarrollo">Desarrollo</a></h2>
                     <p>Mis proyectos de software y afines...</p>
                 </div>
             </article>
 
             <article class="writing">
                 <div>
-                    <h2><a href="<?php echo $base_url ?>term/letras">Letras</a></h2>
+                    <h2><a href="<?php echo BASE_URL ?>term/letras">Letras</a></h2>
                     <p>Palabras y literatura barata...</p>
                 </div>
             </article>
 
             <article class="drawing">
                 <div>
-                    <h2><a href="<?php echo $base_url ?>term/dibujo">Dibujo</a></h2>
+                    <h2><a href="<?php echo BASE_URL ?>term/dibujo">Dibujo</a></h2>
                     <p>A veces me gusta pintar monos...</p>
                 </div>
             </article>
 
             <article class="music">
                 <div>
-                    <h2><a href="<?php echo $base_url ?>term/musica">Música</a></h2>
+                    <h2><a href="<?php echo BASE_URL ?>term/musica">Música</a></h2>
                     <p>Mis composiciones, rock y guitarras...</p>
                 </div>
             </article>
