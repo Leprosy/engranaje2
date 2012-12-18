@@ -5,9 +5,9 @@
         <title>Leprosystems. This is Leprosystems.com</title>    
         <meta name="description" content="aplicaciones, codigo fuente, dibujo, escritos, musica" />
         <meta name="author" content="Miguel Rojas" />
-        <link href="<?php echo BASE_URL ?>style.css" rel="stylesheet" />
-        <script src="<?php echo BASE_URL ?>edjs/edward.js"></script>
-        <script src="<?php echo BASE_URL ?>jquery.js"></script>
+        <link href="<?php echo BASE_URL ?>view/style.css" rel="stylesheet" />
+        <script src="<?php echo BASE_URL ?>view/edjs/edward.js"></script>
+        <script src="<?php echo BASE_URL ?>view/jquery.js"></script>
     </head>
 
     <body>
