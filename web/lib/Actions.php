@@ -9,12 +9,12 @@ class Actions {
         $posts = json_decode(curl_exec($ch));
         curl_close($ch);
 
-        self::showView();
+        include self::getView();
     }
 
-    static function showView() {
+    static function getView() {
         $d = debug_backtrace();
         $view = $d[1]['function'];
-        include('view/' . $view . '.php');
+        return 'view/' . $view . '.php';
     }
 }
