@@ -1,3 +1,2 @@
-<p>Home</p>
 <?php
-var_dump($posts);
+include "template.php";

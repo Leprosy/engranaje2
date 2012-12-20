@@ -53,11 +53,11 @@
 
         <section id="main">
             <section id="contents">
+                <h3>Últimos artículos : </h3>
                 <?php foreach($posts as $post) : ?>
                 <article>
-                    <h2><a href="<?php echo permalink($post) ?>"><?php echo $post->title ?></a></h2>
-                    <p class="meta"><?php echo reldate($post->published_at) ?></p>
-                    <!-- <p class="read"><a href="#">Ver más...</a></p> -->
+                    <h2><a href="<?php echo Html::permalink($post) ?>"><?php echo $post->title ?></a></h2>
+                    <p class="meta"><?php echo Html::reldate($post->published_at) ?></p>
                 </article>
                 <?php endforeach; ?>
             </section>
