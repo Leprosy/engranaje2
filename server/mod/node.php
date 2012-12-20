@@ -23,7 +23,7 @@ class node {
             if (is_numeric($id)) {
                 $nodes->where('id', $id);
             } else {
-                $nodes->where('id', $id);
+                $nodes->where('slug', $id);
             }
         }
 

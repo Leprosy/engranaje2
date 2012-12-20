@@ -5,6 +5,18 @@ class Actions {
         include self::getView();
     }
 
+    static function post($data) {
+        $post = self::getRequest('?module=node&id=' . $data['slug']);
+
+        if (count($post)) {
+            $post = $post[0];
+        } else {
+            $post = null;
+        }
+
+        include self::getView();
+    }
+
     static function getView() {
         $d = debug_backtrace();
         $view = $d[1]['function'];
