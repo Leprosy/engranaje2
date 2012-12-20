@@ -1,4 +1,5 @@
 <?php
+
 /* Bootstrap */
 include 'config.php';
 include 'lib/Autoloader.php';
