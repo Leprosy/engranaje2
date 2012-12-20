@@ -57,7 +57,7 @@
                 <?php foreach($posts as $post) : ?>
                 <article>
                     <h2><a href="<?php echo Html::permalink($post) ?>"><?php echo $post->title ?></a></h2>
-                    <p class="meta"><?php echo Html::reldate($post->published_at) ?></p>
+                    <p class="meta">Publicado hace <?php echo Html::reldate($post->published_at) ?></p>
                 </article>
                 <?php endforeach; ?>
             </section>
