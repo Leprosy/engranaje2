@@ -17,7 +17,7 @@ $_engRoutes = array(
                 'action' => 'term',
                 'params' => array('term')
             ),
-        '//' =>
+        '/^$/' =>
             array(
                 'action' => 'home'
             )
