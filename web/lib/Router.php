@@ -10,6 +10,7 @@ class Router {
 
         /* Get rules and match'em */
         global $_engRoutes;
+        $action = false;
 
         foreach ($_engRoutes as $rule => $data) {
             if (preg_match($rule, $url, $matches)) {
@@ -26,6 +27,12 @@ class Router {
                 unset($newdata);
                 break;
             }
+        }
+
+        /* Not found */
+        if (!$action) {
+            $action = '404';
+            $data = null;
         }
 
         return array($action, $data);
