@@ -5,17 +5,21 @@ class Actions {
     }
 
     function home($data) {
-        $this->posts = self::getRequest('?module=node&limit=4');
+        $this->posts = self::getRequest('?module=node&limit=10');
     }
 
     function post($data) {
         $post = self::getRequest('?module=node&id=' . $data['slug']);
 
         if (count($post)) {
-            $post = $post[0];
+            $this->post = $post[0];
         } else {
-            $post = null;
+            $this->post = null;
         }
+    }
+
+    function term($data) {
+        $this->posts = self::getRequest('?module=node&limit=10&term=' . $data['term']);
     }
 
     function doAction($action, $data) {
