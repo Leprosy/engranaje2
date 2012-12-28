@@ -27,7 +27,7 @@ class BaseActions {
         $this->$action($data);
 
         /* Use the template */
-        $view = 'view/' . $action . '.php';
+        $view = 'content/' . $action . '.php';
 
         if (file_exists($view)) {
             require($view);

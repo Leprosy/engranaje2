@@ -1,5 +1,4 @@
 <?php
-
 try {
     /* Bootstrap */
     include 'config.php';

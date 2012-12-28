@@ -1,6 +1,7 @@
 <?php
 /* Constants */
 define('BASE_URL', 'http://localhost/engranaje2/web/');
+define('CONTENT_URL', 'http://localhost/engranaje2/web/content/');
 define('SERVER_URL', 'http://localhost/engranaje2/server/');
 define('REQ_TIMEOUT', 5);
 
