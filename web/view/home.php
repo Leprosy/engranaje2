@@ -1,2 +1,3 @@
 <?php
-include "template.php";
+
+var_dump($this->posts);
