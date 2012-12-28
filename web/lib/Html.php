@@ -11,7 +11,7 @@ class Html {
         $etime = time() - $ptime;
     
         if ($etime < 1) {
-            return '0 seconds';
+            return 'ahora';
         }
         
         $a = array( 12 * 30 * 24 * 60 * 60  =>  'año',

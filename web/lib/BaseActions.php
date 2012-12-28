@@ -1,5 +1,5 @@
 <?php
-class Actions {
+class BaseActions {
     function __call($name, $data) {
         throw new Exception('no_action ' . $name);
     }
