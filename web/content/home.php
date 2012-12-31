@@ -25,6 +25,7 @@
                 <article>
                     <h2><?php echo $post->title ?></h2>
                     <p class="meta">Publicado hace <?php echo Html::reldate($post->published_at) ?></p>
+                    <p><?php echo $post->description; ?></p>
                 </article>
             <?php endforeach; ?>
         </section>
