@@ -9,6 +9,7 @@
         <title>LEPROSYSTEMS</title>
 
         <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="stylesheet" media="all" href="<?php echo BASE_URL ?>content/css/normalize.min.css">
         <link rel="stylesheet" media="all" href="<?php echo BASE_URL ?>content/css/main.css">
         <script src="<?php echo BASE_URL ?>content/js/modernizr.js"></script>
         <script src="<?php echo BASE_URL ?>content/js/jquery.js"></script>
@@ -19,7 +20,7 @@
             <h1>Leprosystems</h1>
         </header>
 
-        <section>
+        <section class="main">
             <?php foreach ($this->posts as $post) : ?>
                 <article>
                     <h2><?php echo $post->title ?></h2>
