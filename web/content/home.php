@@ -16,22 +16,24 @@
     </head>
 
     <body>
-        <header>
-            <h1>Leprosystems</h1>
-        </header>
-
-        <section class="main">
-            <?php foreach ($this->posts as $post) : ?>
-                <article>
-                    <h2><?php echo $post->title ?></h2>
-                    <p class="meta">Publicado hace <?php echo Html::reldate($post->published_at) ?></p>
-                    <p><?php echo $post->description; ?></p>
-                </article>
-            <?php endforeach; ?>
-        </section>
-
-        <footer>
-            (c) <?php echo date('Y') ?> Leprosystems.com
-        </footer>
+        <div class="page">
+            <header>
+                <h1><a href="<?php echo BASE_URL ?>">Lepr0systems</a></h1>
+            </header>
+    
+            <section class="main">
+                <?php foreach ($this->posts as $post) : ?>
+                    <article>
+                        <h2><a href="<?php echo Html::permalink($post) ?>"><?php echo $post->title ?></a></h2>
+                        <p class="meta">Publicado hace <?php echo Html::reldate($post->published_at) ?></p>
+                        <p><?php echo $post->description; ?></p>
+                    </article>
+                <?php endforeach; ?>
+            </section>
+    
+            <footer>
+                (c) <?php echo date('Y') ?> Leprosystems.com
+            </footer>
+        </div>
     </body>
 </html>
