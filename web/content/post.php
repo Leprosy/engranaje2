@@ -24,8 +24,8 @@
             <section class="main">
                 <article>
                     <h1><?php echo $this->post->title ?></h1>
-                    <p class="meta">Publicado hace <?php echo Html::reldate($this->post->published_at) ?></p>
-                    <p><?php echo $this->post->content; ?></p>
+                    <p class="meta">Publicado el <?php echo $this->post->published_at ?></p>
+                    <p class="content"><?php echo $this->post->content; ?></p>
                 </article>
             </section>
     
