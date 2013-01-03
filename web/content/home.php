@@ -13,6 +13,7 @@
         <link rel="stylesheet" media="all" href="<?php echo BASE_URL ?>content/css/main.css">
         <script src="<?php echo BASE_URL ?>content/js/modernizr.js"></script>
         <script src="<?php echo BASE_URL ?>content/js/jquery.js"></script>
+        <script src="<?php echo BASE_URL ?>content/js/history.js"></script>
     </head>
 
     <body>
@@ -41,13 +42,16 @@
                     <article>
                         <h1></h1>
                         <p class="meta"></p>
-                        <p class="content"></p>
+                        <section class="content"></section>
                     </article>
                 </section>
             </div>
 
             <footer>
-                (c) <?php echo date('Y') ?> Leprosystems.com
+                <p>(c) <?php echo date('Y') ?> Leprosystems.com</p>
+                <p>
+                    <a href="http://twitter.com/leprosy" class="">Twitter</a>
+                </p>
             </footer>
         </div>
     </body>
@@ -55,7 +59,7 @@
     <script>
     function loadPost(slug) {
         $.get('<?php echo SERVER_URL ?>?module=node&id=' + slug, function(data) {
-            data = data[0]; console.log(data);
+            var data = data[0];
 
             /* Draw post */
             $('#posts article h1').html(data.title);
@@ -64,16 +68,26 @@
 
             /* Render */
             $('#front').fadeOut(function() {
-                $('#posts').fadeIn()
+                $('#posts').fadeIn();
             });
+
+            /* Change URL */
+            var date = data.published_at.split('-');
+            History.pushState(null, null, date[0] + '/' + date[1] + '/' + data.slug);
         });
     }
 
     $(document).ready(function() {
         $('section a').click(function() {
-            slug = this.href.split('<?php echo BASE_URL ?>')[1].split('/')[2];
+            var slug = this.href.split('<?php echo BASE_URL ?>')[1].split('/')[2];
             loadPost(slug);
             return false;
+        });
+
+        /* Bind to StateChange Event */
+        History.Adapter.bind(window,'statechange',function() {
+            var State = History.getState();
+            History.log(State.data, State.title, State.url);
         });
     });
     </script>

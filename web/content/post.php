@@ -25,7 +25,9 @@
                 <article>
                     <h1><?php echo $this->post->title ?></h1>
                     <p class="meta">Publicado el <?php echo $this->post->published_at ?></p>
-                    <p class="content"><?php echo $this->post->content; ?></p>
+                    <section class="content">
+                        <?php echo $this->post->content; ?>
+                    </section>
                 </article>
             </section>
     
