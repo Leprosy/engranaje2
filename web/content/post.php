@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-
-        <title>LEPROSYSTEMS</title>
-
-        <link rel="shortcut icon" href="/favicon.ico">
-        <link rel="stylesheet" media="all" href="<?php echo BASE_URL ?>content/css/normalize.min.css">
-        <link rel="stylesheet" media="all" href="<?php echo BASE_URL ?>content/css/main.css">
-        <script src="<?php echo BASE_URL ?>content/js/modernizr.js"></script>
-        <script src="<?php echo BASE_URL ?>content/js/jquery.js"></script>
-    </head>
+    <?php include('header.php') ?>
 
     <body>
         <div class="page inside">
@@ -29,11 +16,16 @@
                         <?php echo $this->post->content; ?>
                     </section>
                 </article>
+
+                <div id="social">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-lang="es">Twittear</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+                    <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.google.com&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;font=arial&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=173861706020705" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+                </div>
             </section>
-    
-            <footer>
-                (c) <?php echo date('Y') ?> Leprosystems.com
-            </footer>
+
+            <?php include('footer.php') ?>
         </div>
     </body>
 </html>

@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" itemscope itemtype="http://schema.org/Article">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-
-        <title>LEPROSYSTEMS</title>
-
-        <link rel="shortcut icon" href="/favicon.ico">
-        <link rel="stylesheet" media="all" href="<?php echo BASE_URL ?>content/css/normalize.min.css">
-        <link rel="stylesheet" media="all" href="<?php echo BASE_URL ?>content/css/main.css">
-        <script src="<?php echo BASE_URL ?>content/js/modernizr.js"></script>
-        <script src="<?php echo BASE_URL ?>content/js/jquery.js"></script>
-        <script src="<?php echo BASE_URL ?>content/js/history.js"></script>
-    </head>
+    <?php include('header.php') ?>
 
     <body>
         <div class="page">
@@ -47,12 +33,7 @@
                 </section>
             </div>
 
-            <footer>
-                <p>(c) <?php echo date('Y') ?> Leprosystems.com</p>
-                <p>
-                    <a href="http://twitter.com/leprosy" class="">Twitter</a>
-                </p>
-            </footer>
+            <?php include('footer.php') ?>
         </div>
     </body>
 
