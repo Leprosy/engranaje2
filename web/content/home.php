@@ -38,36 +38,40 @@
     </body>
 
     <script>
-    function loadPost(slug) {
-        $.get('<?php echo SERVER_URL ?>?module=node&id=' + slug, function(data) {
-            var data = data[0];
-
+    function loadPost(link) {
+        $.get(link + '?ajax=true', function(data) {
             /* Draw post */
-            $('#posts article h1').html(data.title);
-            $('#posts .meta').html('Publicado el ' + data.published_at);
-            $('#posts .content').html(data.content);
+            $('#posts section.main').html(data);
 
             /* Render */
             $('#front').fadeOut(function() {
                 $('#posts').fadeIn();
             });
+        });
+    }
 
-            /* Change URL */
-            var date = data.published_at.split('-');
-            History.pushState(null, null, date[0] + '/' + date[1] + '/' + data.slug);
+    function loadHome() {
+        /* Render */
+        $('#posts').fadeOut(function() {
+            $('#front').fadeIn();
         });
     }
 
     $(document).ready(function() {
-        $('section a').click(function() {
-            var slug = this.href.split('<?php echo BASE_URL ?>')[1].split('/')[2];
-            loadPost(slug);
+        $('section a').click(function() { 
+            History.pushState(null, null, this.href);
             return false;
         });
 
         /* Bind to StateChange Event */
         History.Adapter.bind(window,'statechange',function() {
             var State = History.getState();
+            if (State.url != '<?php echo BASE_URL ?>') {
+                loadPost(State.url);
+            } else {
+                loadHome();
+            }
+
             History.log(State.data, State.title, State.url);
         });
     });

@@ -82,7 +82,9 @@ section.main article p.meta {
 section.main #social {
 	margin-left: 1%;
 }
-
+article section.content {
+    line-height: 1.5em;
+}
 div.inside section.main article {
 	float: none;
 	text-align: left;

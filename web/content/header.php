@@ -11,4 +11,5 @@
     <link rel="stylesheet" media="all" href="<?php echo BASE_URL ?>content/css/main.css">
     <script src="<?php echo BASE_URL ?>content/js/modernizr.js"></script>
     <script src="<?php echo BASE_URL ?>content/js/jquery.js"></script>
+    <script src="<?php echo BASE_URL ?>content/js/history.js"></script>
 </head>
