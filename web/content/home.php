@@ -73,9 +73,9 @@
             } else {
                 loadHome();
             }
-            console.log(State);
-            History.log(State.data, State.title, State.url);
-            _gaq.push(['_trackPageview', State.url]);
+
+            var url = '/' + State.url.split('<?php echo BASE_URL ?>')[1];
+            _gaq.push(['_trackPageview', url]);
         });
     });
     </script>
