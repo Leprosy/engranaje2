@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="<?php if (isset($this->post)) :?><?php echo $this->post->description ?><?php else: ?>Letras, números y dibujos por doquier. QUIQUID LATINE DICTUM SIT ALTUM VIDITUR<?php endif; ?>">
+    <meta name="keywords" content="<?php if (isset($this->post)) :?><?php foreach ($this->post->terms as $t) {echo $t->name . ',';} ?>Leprosystems<?php else: ?>Software, Cuentos, Blog, Musica, Dibujos, Noticias.<?php endif; ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
     <title><?php if (isset($this->post)) {echo $this->post->title . ' - ';} ?>LEPROSYSTEMS</title>
