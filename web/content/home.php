@@ -42,6 +42,7 @@
         $.get(link + '?ajax=true', function(data) {
             /* Draw post */
             $('#posts section.main').html(data);
+            $('head title').html($('#posts article h1').html() + ' - LEPROSYSTEMS');
 
             /* Render */
             $('#front').fadeOut(function() {
@@ -55,10 +56,11 @@
         $('#posts').fadeOut(function() {
             $('#front').fadeIn();
         });
+        $('head title').html('LEPROSYSTEMS');
     }
 
     $(document).ready(function() {
-        $('section a').click(function() { 
+        $('section a, #posts h1 a').click(function() { 
             History.pushState(null, null, this.href);
             return false;
         });
