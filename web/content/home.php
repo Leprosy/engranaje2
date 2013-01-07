@@ -71,8 +71,9 @@
             } else {
                 loadHome();
             }
-
+            console.log(State);
             History.log(State.data, State.title, State.url);
+            _gaq.push(['_trackPageview', State.url]);
         });
     });
     </script>
