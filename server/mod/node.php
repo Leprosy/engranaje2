@@ -78,26 +78,26 @@ class node {
     function post_index() {
         $data = $_POST;
 
-        if ($this->isValid($data)) {
-            /* Timestamping */
-            $date = date('Y-m-d H:i:s');
-            $data['created_at'] = $date;
-            $data['modified_at'] = $date;
+        /* Timestamping */
+        $date = date('Y-m-d H:i:s');
+        $data['created_at'] = $date;
+        $data['modified_at'] = $date;
 
-            if (!isset($data['published_at'])) {
-                $data['published_at'] = $date;
-            }
-
-            /* Slugify */
-
-            /* Store */
-            $this->save($data);
-        } else {
-            $this->sendError("invalid_fields", 400);
+        if (!isset($data['published_at'])) {
+            $data['published_at'] = $date;
         }
+
+        /* Slugify */
+
+        /* Store */
+        $this->save($data);
     }
 
     function save($data) {
+        if (!$this->isValid($data)) {
+            $this->sendError("invalid_fields", 400);
+        }
+
         /* Store */
         $db = Server::getDb();
         $row = $db->node()->insert($data);

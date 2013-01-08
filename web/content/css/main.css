@@ -130,3 +130,19 @@ footer p {
     position:relative;
     top:1px;
 }
+
+/* Mq's */
+@media only screen and (max-width: 768px) {
+	body {
+	   font-size: 60%;
+	}
+	#posts section.main {
+	   width: 100%;
+	}
+	section.main article {
+	    text-align: center;
+	    float: none;
+	    width: auto;
+	    margin-bottom: 12%;
+	}
+}
