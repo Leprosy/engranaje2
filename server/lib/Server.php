@@ -2,6 +2,7 @@
 class Server {
     static $codes = array(
                     '200' => 'HTTP/1.1 200 OK',
+                    '201' => 'HTTP/1.1 200 Created',
                     '404' => 'HTTP/1.1 404 Not Found',
                     '400' => 'HTTP/1.1 400 Bad Request',
                     '500' => 'HTTP/1.1 500 Internal Server Error'            

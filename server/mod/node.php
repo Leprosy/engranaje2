@@ -76,12 +76,41 @@ class node {
     }
 
     function post_index() {
-        if ($this->isValid($_POST)) {
-            $db = Server::getDb();
-            $row = $db->node()->insert($_POST);
-            die(json_encode($row));
+        $data = $_POST;
+
+        if ($this->isValid($data)) {
+            /* Timestamping */
+            $date = date('Y-m-d H:i:s');
+            $data['created_at'] = $date;
+            $data['modified_at'] = $date;
+
+            if (!isset($data['published_at'])) {
+                $data['published_at'] = $date;
+            }
+
+            /* Slugify */
+
+            /* Store */
+            $this->save($data);
         } else {
             $this->sendError("invalid_fields", 400);
         }
+    }
+
+    function save($data) {
+        /* Store */
+        $db = Server::getDb();
+        $row = $db->node()->insert($data);
+
+        if ($row) {
+            Server::sendHttpCode(201);
+            die(json_encode(array('id' => $row['id'], 'http_code' => 201)));
+        } else {
+            $this->sendError("invalid_fields", 400);
+        }
+    }
+
+    function post_update() {
+        
     }
 }
