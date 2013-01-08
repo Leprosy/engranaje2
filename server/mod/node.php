@@ -1,10 +1,27 @@
 <?php
 class node {
+    public $valid = array('user_id', 'title', 'content', 'description');
+
     function predispatch() {
         header('Content-type: application/json');
     }
 
     function postdispatch() {}
+
+    function isValid($data) {
+        foreach ($this->valid as $field) {
+            if (!isset($data[$field])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function sendError($msg, $code = 404) {
+        Server::sendHttpCode($code);
+        die(json_encode(array('msg' => $msg, 'http_code' => $code)));
+    }
 
     function get_index() {
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -54,7 +71,17 @@ class node {
 
             echo json_encode($result);
         } else {
-            Server::sendHttpCode(404);
+            $this->sendError("not_found", 404);
+        }
+    }
+
+    function post_index() {
+        if ($this->isValid($_POST)) {
+            $db = Server::getDb();
+            $row = $db->node()->insert($_POST);
+            die(json_encode($row));
+        } else {
+            $this->sendError("invalid_fields", 400);
         }
     }
 }
