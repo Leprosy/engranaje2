@@ -13,6 +13,7 @@ class BaseActions {
 
         if (count($post)) {
             $this->post = $post[0];
+            $this->comments = self::getRequest('?module=comment&node_id=' . $post[0]->id);
         } else {
             $this->post = null;
         }

@@ -15,6 +15,19 @@ $content = '
 
     <iframe src="//www.facebook.com/plugins/like.php?href=' . $url . '&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;font=arial&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=173861706020705" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
 </div>
+
+<div id="comments">
+    <h3>' . count($this->comments) . ' comentarios</h3>';
+
+foreach($this->comments as $comment) {
+    $content .= '
+        <article>
+            <p><strong>' . $comment->user . '</strong> Dijo hace ' . Html::reldate($comment->published_at). '</p>
+            <p>'. $comment->content . '</p>
+        </article>';
+}
+
+$content .= '</div>
 ';
 
 if (isset($_GET['ajax'])) {

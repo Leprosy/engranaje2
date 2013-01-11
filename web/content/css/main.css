@@ -81,7 +81,29 @@ section.main article p.meta {
 }
 section.main #social {
 	margin-left: 1%;
+	margin-bottom: 5%;
 }
+section.main #comments {
+    margin-left: 1%;
+    margin-bottom: 5%;	
+}
+section.main #comments h3 {
+	font-size: 110%;
+	font-weight: bold;
+	margin-bottom: 2%;
+}
+section.main #comments article {
+	font-size: 90%;
+	margin-left: 0;
+	margin-bottom: 1%;
+	padding: 1%;
+	background-color: #ddd;
+	box-shadow: 1px 1px 4px #888;
+}
+section.main #comments article strong {
+	font-weight: bold;
+}
+
 article section.content {
     line-height: 1.5em;
 }
@@ -129,20 +151,4 @@ footer p {
 }.button:active {
     position:relative;
     top:1px;
-}
-
-/* Mq's */
-@media only screen and (max-width: 768px) {
-	body {
-	   font-size: 60%;
-	}
-	#posts section.main {
-	   width: 100%;
-	}
-	section.main article {
-	    text-align: center;
-	    float: none;
-	    width: auto;
-	    margin-bottom: 12%;
-	}
 }
