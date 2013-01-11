@@ -1,26 +1,10 @@
 <?php
-class node {
+class node extends Module {
     public $valid = array('user_id', 'title', 'content', 'description');
+    public $name = 'node';
 
     function predispatch() {
         header('Content-type: application/json');
-    }
-
-    function postdispatch() {}
-
-    function isValid($data) {
-        foreach ($this->valid as $field) {
-            if (!isset($data[$field])) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    function sendError($msg, $code = 404) {
-        Server::sendHttpCode($code);
-        die(json_encode(array('msg' => $msg, 'http_code' => $code)));
     }
 
     function get_index() {
@@ -91,23 +75,6 @@ class node {
 
         /* Store */
         $this->save($data);
-    }
-
-    function save($data) {
-        if (!$this->isValid($data)) {
-            $this->sendError("invalid_fields", 400);
-        }
-
-        /* Store */
-        $db = Server::getDb();
-        $row = $db->node()->insert($data);
-
-        if ($row) {
-            Server::sendHttpCode(201);
-            die(json_encode(array('id' => $row['id'], 'http_code' => 201)));
-        } else {
-            $this->sendError("invalid_fields", 400);
-        }
     }
 
     function post_update() {
