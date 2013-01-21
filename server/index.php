@@ -9,6 +9,9 @@ define('ENG_DBPASS', 'leprosy');
 define('ENG_DBNAME', 'eng2');
 define('ENG_PAGELIMIT', 20);
 
+define('ENG_BASE_URL', 'http://localhost/engranaje2/web/');
+define('ENG_AKISMET_API_KEY', '921702d611eb');
+
 include(ENG_APP_PATH . 'lib/Autoloader.php');
 spl_autoload_register(array('Autoloader', 'loadClass'));
 

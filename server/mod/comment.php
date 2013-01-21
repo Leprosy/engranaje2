@@ -43,6 +43,20 @@ class comment extends Module {
 
         /* Slugify */
 
+        /* Spam detection */
+        $data['status'] = 'published';
+
+        $akismet = new Akismet(ENG_BASE_URL, ENG_AKISMET_API_KEY);
+        $akismet->setCommentAuthor($data['user']);
+        $akismet->setCommentAuthorEmail($data['mail']);
+        $akismet->setCommentAuthorURL('');
+        $akismet->setCommentContent($data['content']);
+        $akismet->setPermalink('');
+
+        if ($akismet->isCommentSpam()) {
+            $data['status'] = 'spam';
+        }
+
         /* Store */
         $this->save($data);
     }
