@@ -22,7 +22,7 @@ $content = '
         <li><input type="text" id="user" placeholder="Nombre..." class="comm_data" /></li>
         <li><input type="text" id="mail" placeholder="E-mail..." class="comm_data" /></li>
         <li><textarea id="content" placeholder="Comentario..." class="comm_data"></textarea></li>
-        <li><input type="button" value="Enviar" onclick="sendComment()" /></li>
+        <li><input type="button" class="button" value="Enviar" onclick="sendComment()" /></li>
     </ul>
 </div>
 
