@@ -1,5 +1,7 @@
 <?php
 class BaseActions {
+    public $forward = false; 
+
     function __call($name, $data) {
         throw new Exception('no_action ' . $name);
     }
@@ -11,13 +13,20 @@ class BaseActions {
     function post($data) {
         $post = self::getRequest('?module=node&id=' . $data['slug']);
 
-        if (count($post)) {
+        if (!isset($post->http_code)) {
             $this->post = $post[0];
             $this->comments = self::getRequest('?module=comment&node_id=' . $post[0]->id);
+
+            if (isset($this->comments->http_code)) {
+                $this->comments = null;
+            }
         } else {
             $this->post = null;
+            $this->forwardTo('error404', $data);
         }
     }
+
+    function error404() { /* call an ambulance */ }
 
     function term($data) {
         $this->posts = self::getRequest('?module=node&limit=10&term=' . $data['term']);
@@ -27,14 +36,26 @@ class BaseActions {
         /* Call action logic */
         $this->$action($data);
 
-        /* Use the template */
-        $view = 'content/' . $action . '.php';
-
-        if (file_exists($view)) {
-            require($view);
+        /* Forward? */
+        if ($this->forward) {
+            $data = $this->forward;
+            $this->forward = false;
+            $this->doAction($data['action'], $data['data']);
+            
         } else {
-            throw new Exception('no_template ' . $view);
+            /* Finish request and use the template */
+            $view = 'content/' . $action . '.php';
+    
+            if (file_exists($view)) {
+                require($view);
+            } else {
+                throw new Exception('no_template ' . $view);
+            }
         }
+    }
+
+    function forwardTo($action, $data) {
+        $this->forward = array('action' => $action, 'data' => $data);
     }
 
     protected function getRequest($res) {

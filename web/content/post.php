@@ -12,19 +12,38 @@ $content = '
 <div id="social">
     <a href="https://twitter.com/share" class="twitter-share-button" data-lang="es">Twittear</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
     <iframe src="//www.facebook.com/plugins/like.php?href=' . $url . '&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;font=arial&amp;colorscheme=light&amp;action=like&amp;height=21&amp;appId=173861706020705" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
 </div>
 
+<div id="comment">
+    <h3>Ingresa tu comentario</h3>
+    <input type="hidden" id="node_id" value="' .$this->post->id . '" class="comm_data" />
+    <ul>
+        <li><input type="text" id="user" placeholder="Nombre..." class="comm_data" /></li>
+        <li><input type="text" id="mail" placeholder="E-mail..." class="comm_data" /></li>
+        <li><textarea id="content" placeholder="Comentario..." class="comm_data"></textarea></li>
+        <li><input type="button" value="Enviar" onclick="sendComment()" /></li>
+    </ul>
+</div>
+
+<script>
+function sendComment() {
+    var data = {};
+    $("#comment .comm_data").each(function(a,b) { data[b.id] = b.value });
+    $.post("'. SERVER_URL . '?module=comment", data, function(d) { if (d.http_code==201) alert("ok") } );
+}
+</script>
+
 <div id="comments">
     <h3>' . count($this->comments) . ' comentarios</h3>';
-
-foreach($this->comments as $comment) {
-    $content .= '
-        <article>
-            <p><strong>' . $comment->user . '</strong> Dijo hace ' . Html::reldate($comment->published_at). '</p>
-            <p>'. $comment->content . '</p>
-        </article>';
+if ($this->comments) {
+    foreach($this->comments as $comment) {
+        $content .= '
+            <article>
+                <p><strong>' . $comment->user . '</strong> Dijo hace ' . Html::reldate($comment->published_at). '</p>
+                <p>'. $comment->content . '</p>
+            </article>';
+    }
 }
 
 $content .= '</div>

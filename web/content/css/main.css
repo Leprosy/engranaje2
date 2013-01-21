@@ -83,11 +83,11 @@ section.main #social {
 	margin-left: 1%;
 	margin-bottom: 5%;
 }
-section.main #comments {
+section.main #comments, section.main #comment {
     margin-left: 1%;
     margin-bottom: 5%;	
 }
-section.main #comments h3 {
+section.main #comments h3, section.main #comment h3 {
 	font-size: 110%;
 	font-weight: bold;
 	margin-bottom: 2%;
@@ -102,6 +102,10 @@ section.main #comments article {
 }
 section.main #comments article strong {
 	font-weight: bold;
+}
+
+section.main #comment input {
+	/*padding:*/ 
 }
 
 article section.content {
