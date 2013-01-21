@@ -3,27 +3,24 @@
 
 body {
 	font-family: "Arimo", Arial, sans;
-	font-size: 0.85em;
+	font-size: 0.8em;
 	background-color: #000;
 }
 
 .page {
 	background: url(../img/back.png);
-	width: 100%;
-	margin-top: 5%;
-	margin-bottom: 2%;
+	margin-top: 3em;
 }
-
 #posts {
 	display: none;
 }
 
 header {
-	padding: 8% 0;
+	padding: 2em 0 2.5em;
 }
 header h1 {
 	font-family: "Economica", Impact, sans;
-	font-size: 250%;
+	font-size: 280%;
 	text-align: center;
 	text-shadow: 1px 1px 1px #fff;
 	color: #999;
@@ -37,24 +34,23 @@ header h1 a:hover {
 	color: #888;
 }
 
-
+/*
 div.inside header h1 {
     text-align: right;
-}
+}*/
 
 section.main {
-	margin-top: 2%;
 	overflow: hidden;
 }
 section.main article {
 	text-align: center;
-	margin-bottom: 10%;
+	margin-bottom: 3em;
 }
 section.main article h1, section.main article h2 {
 	font-size: 120%;
 	font-weight: bold;
 	text-shadow: 1px 1px 2px #666;
-	margin-bottom: 1%;
+	margin-bottom: 0.5em;
 }
 section.main article h2 a {
 	color: #000;
@@ -76,6 +72,7 @@ section.main article p.meta {
 	text-shadow: 1px 1px 2px #eee;
 	margin-bottom: 2%;
 }
+/*
 section.main #social, section.main #comments, section.main #comment{
 	margin: 0 5% 8% 5%;
 }
@@ -126,13 +123,14 @@ div.inside section.main article {
 }
 
 
+*/
 
 footer {
-	padding: 10% 0 4%;
+	padding: 3em 0 3em;
 	text-align: center;
 }
 footer p {
-	margin-bottom: 1%;
+	margin-bottom: 1em;
 }
 footer strong {
 	font-weight: bold;
@@ -174,7 +172,8 @@ footer strong {
 /* MQ */
 @media(min-width:480px) {
     body {
-       font-size: 1em;
+        display: none;
+        font-size: 1em;
     }
     header h1 {
     
@@ -182,8 +181,16 @@ footer strong {
     }
 }
 
-@media(min-width:1024px) {
-    /* header h1 {
+/*@media(min-width:1024px) {
+    header h1 {
        font-size: 350%;
-    } */
-}
+    }
+    section.main article {
+	    text-align: center;
+	    margin-bottom: 10%;
+	    width: 30%;
+	    margin-left: 1.5%;
+	    margin-right: 1.5%;
+	    float: left;
+	}
+}*/
