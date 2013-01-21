@@ -34,10 +34,10 @@ header h1 a:hover {
 	color: #888;
 }
 
-/*
 div.inside header h1 {
     text-align: right;
-}*/
+    padding-right: 0.2em;
+}
 
 section.main {
 	overflow: hidden;
@@ -64,17 +64,26 @@ section.main article h1 {
 }
 section.main article p {
 	font-size: 112%;
-	margin-bottom: 5%;
+	margin-bottom: 0.5em;
 }
 section.main article p.meta {
 	font-size: 75%;
 	color: #666;
 	text-shadow: 1px 1px 2px #eee;
-	margin-bottom: 2%;
+	margin-bottom: 1em;
 }
-/*
+
+article section.content {
+    line-height: 1.4em;
+}
+div.inside section.main article {
+    padding: 0 1.6em;
+    text-align: justify;
+}
+
 section.main #social, section.main #comments, section.main #comment{
-	margin: 0 5% 8% 5%;
+	padding: 0 1.6em;
+	margin-bottom: 2em;
 }
 section.main #social {
 	text-align: center;
@@ -85,12 +94,13 @@ section.main #comments h3, section.main #comment h3 {
 	font-weight: bold;
 	margin-bottom: 4%;
 }
+
 section.main #comments article {
 	font-size: 90%;
 	margin-left: 0;
-	margin-bottom: 2%;
-	padding: 1%;
-	background-color: #ddd;
+	margin-bottom: 1em;
+	padding: 1em;
+	background-color: #cecece;
 	box-shadow: 1px 1px 4px #888;
 }
 section.main #comments article strong {
@@ -103,27 +113,13 @@ section.main #comment input, section.main #comment textarea {
     width: 95%;
     font-family: Arial, sans;
 }
-section.main #comment textarea {
-	height: 7em;
-}
+
 section.main #comment input.button {
 	width: 50%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
-
-
-article section.content {
-    line-height: 1.4em;
-}
-div.inside section.main article {
-    padding: 0 5%;
-    text-align: justify;
-}
-
-
-*/
 
 footer {
 	padding: 3em 0 3em;
