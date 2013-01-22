@@ -42,7 +42,7 @@ function sendComment() {
 </script>
 
 <div id="comments">
-    <h3>' . count($this->comments) . ' comentarios</h3>';
+    <h3>' . count($this->comments) . ' comentario' . (count($this->comments)!=1 ? 's' : ''). '</h3>';
 if ($this->comments) {
     foreach($this->comments as $comment) {
         $content .= '
