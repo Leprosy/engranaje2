@@ -12,6 +12,7 @@
                 <section class="main">
                     <?php foreach ($this->posts as $post) : ?>
                         <article>
+                            <img src="http://lorempixel.com/400/200/technics/dummy<?php echo rand() * 12 ?>/" />
                             <h2><a href="<?php echo Html::permalink($post) ?>"><?php echo $post->title ?></a></h2>
                             <p class="meta">Publicado hace <?php echo Html::reldate($post->published_at) ?></p>
                             <p><?php echo $post->description; ?></p>
