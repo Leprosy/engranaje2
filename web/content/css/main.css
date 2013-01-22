@@ -16,7 +16,7 @@ body {
 }
 
 #message {
-	position: absolute;
+	position: fixed;
 	text-align: center;
 	top: 10em;
 	background-color: #fff;
@@ -32,7 +32,7 @@ body {
 header {
 	padding: 2em 0 2.5em;
 }
-header h1, #posts h3 {
+header h1, div#posts > h3 {
 	font-family: "Economica", Impact, sans;
 	font-size: 280%;
 	text-align: center;
@@ -40,7 +40,7 @@ header h1, #posts h3 {
 	color: #999;
 	text-transform: uppercase;
 }
-#posts h3 {
+div#posts > h3 {
 	padding: 0.8em 0.5em 0;
 	text-align: right;
 }

@@ -6,3 +6,15 @@
         <a href="#" class="button">Mail</a>
     </p>
 </footer>
+
+<script>
+function message(msg) {
+    var el = $('<div id="message">' + msg + '</div>').hide();
+    el.css('margin-left', $(window).width()/2 - $(el).width()/2);
+    
+    $('body').prepend(el);
+    /* Dodge this */
+    el.fadeIn().on('click', function() {el.fadeOut(function() {el.remove()});});
+    
+}
+</script>

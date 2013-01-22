@@ -34,9 +34,9 @@ function sendComment() {
     var data = {};
     $("#comment .comm_data").each(function(a,b) { data[b.id] = b.value });
     $.post("'. SERVER_URL . '?module=comment", data, function(d) {
-        alert("ok"); 
+        message("Su comentario se ha enviado y será publicado pronto."); 
     })
-    .error(function() { alert("error") })
+    .error(function() { message("Hubo un problema al enviar su comentario.<br />Intente mas tarde.") })
     .complete(function() {$("#commentform .button").val("Enviar"); });
 }
 </script>
