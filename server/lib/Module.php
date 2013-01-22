@@ -6,14 +6,14 @@ class Module {
     function predispatch() {}
     function postdispatch() {}
 
-    function isValid($data) {
+    function isInvalid($data) {
         foreach ($this->valid as $field) {
-            if (!isset($data[$field])) {
-                return false;
+            if (!isset($data[$field]) || $data[$field] == '') {
+                return $field;
             }
         }
 
-        return true;
+        return false;
     }
 
     function sendError($msg, $code = 404) {
@@ -22,8 +22,8 @@ class Module {
     }
 
     function save($data) {
-        if (!$this->isValid($data)) {
-            $this->sendError("invalid_fields", 400);
+        if ($field = $this->isInvalid($data)) {
+            $this->sendError("invalid_field : " . $field, 400);
         }
 
         /* Store */
@@ -35,7 +35,7 @@ class Module {
             Server::sendHttpCode(201);
             die(json_encode(array('id' => $row['id'], 'http_code' => 201)));
         } else {
-            $this->sendError("invalid_fields", 400);
+            $this->sendError("invalid_insert", 400);
         }
     }
 }

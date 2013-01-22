@@ -15,6 +15,20 @@ body {
 	display: none;
 }
 
+#message {
+	position: absolute;
+	text-align: center;
+	top: 10em;
+	background-color: #fff;
+	border: 1px solid #aaa;
+	box-shadow: 0px 12px 20px #333;
+	padding: 1em 3em;
+	cursor: pointer;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+}
+
 header {
 	padding: 2em 0 2.5em;
 }

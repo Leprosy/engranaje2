@@ -30,9 +30,14 @@ $content = '
 
 <script>
 function sendComment() {
+    $("#commentform .button").val("Enviando...");
     var data = {};
     $("#comment .comm_data").each(function(a,b) { data[b.id] = b.value });
-    $.post("'. SERVER_URL . '?module=comment", data, function(d) { if (d.http_code==201) alert("ok") } );
+    $.post("'. SERVER_URL . '?module=comment", data, function(d) {
+        alert("ok"); 
+    })
+    .error(function() { alert("error") })
+    .complete(function() {$("#commentform .button").val("Enviar"); });
 }
 </script>
 
