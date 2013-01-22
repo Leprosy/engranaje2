@@ -21,9 +21,7 @@
             </div>
 
             <div id="posts" class="inside">
-                <header>
-                    <h1><a href="<?php echo BASE_URL ?>">Lepr0systems</a></h1>
-                </header>
+                <h3><a href="<?php echo BASE_URL ?>">Lepr0systems</a></h3>
                 <section class="main">
                     <article>
                         <h1></h1>
@@ -60,7 +58,7 @@
     }
 
     $(document).ready(function() {
-        $('section a, #posts h1 a').click(function() { 
+        $('section a, #posts h3 a').click(function() { 
             History.pushState(null, null, this.href);
             return false;
         });
