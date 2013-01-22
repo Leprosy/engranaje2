@@ -60,7 +60,7 @@
 
     $(document).ready(function() {
         /* Imagisize */
-        Imagisize.init('body', [980]);
+        //Imagisize.init('body', [980]);
 
         /* Change links */
         $('section a, #posts h3 a').click(function() { 
