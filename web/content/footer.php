@@ -10,7 +10,7 @@
 <script>
 function message(msg) {
     var el = $('<div id="message">' + msg + '</div>').hide();
-    el.css('margin-left', $(window).width()/2 - $(el).width()/2);
+    //el.css('margin-left', $(window).width()/2 - $(el).width()/2);
     
     $('body').prepend(el);
     /* Dodge this */
