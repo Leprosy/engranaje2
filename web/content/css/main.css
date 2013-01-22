@@ -197,3 +197,19 @@ footer strong {
         margin-bottom: 1.5em;
     }
 }
+
+@media(min-width:1024px) {
+    section.main {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media(min-width:1200px) {
+	section.main {
+	    width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
