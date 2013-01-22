@@ -17,13 +17,15 @@ $content = '
 
 <div id="comment">
     <h3>Ingresa tu comentario</h3>
-    <input type="hidden" id="node_id" value="' .$this->post->id . '" class="comm_data" />
-    <ul>
-        <li><input type="text" id="user" placeholder="Nombre..." class="comm_data" /></li>
-        <li><input type="text" id="mail" placeholder="E-mail..." class="comm_data" /></li>
-        <li><textarea rows="6" id="content" placeholder="Comentario..." class="comm_data"></textarea></li>
-        <li><input type="button" class="button" value="Enviar" onclick="sendComment()" /></li>
-    </ul>
+    <div id="commentform">
+        <input type="hidden" id="node_id" value="' .$this->post->id . '" class="comm_data" />
+        <ul>
+            <li><input type="text" id="user" placeholder="Nombre..." class="comm_data" /></li>
+            <li><input type="text" id="mail" placeholder="E-mail..." class="comm_data" /></li>
+            <li><textarea rows="6" id="content" placeholder="Comentario..." class="comm_data"></textarea></li>
+            <li><input type="button" class="button" value="Enviar" onclick="sendComment()" /></li>
+        </ul>
+    </div>
 </div>
 
 <script>
