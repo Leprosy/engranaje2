@@ -12,7 +12,7 @@
                 <section class="main">
                     <?php foreach ($this->posts as $post) : ?>
                         <article>
-                            <img src="http://lorempixel.com/400/200/technics/dummy<?php echo rand() * 12 ?>/" />
+                            <img src="http://lorempixel.com/400/200/technics/dummy<?php echo rand() * 12 ?>" />
                             <h2><a href="<?php echo Html::permalink($post) ?>"><?php echo $post->title ?></a></h2>
                             <p class="meta">Publicado hace <?php echo Html::reldate($post->published_at) ?></p>
                             <p><?php echo $post->description; ?></p>
@@ -59,6 +59,10 @@
     }
 
     $(document).ready(function() {
+        /* Imagisize */
+        Imagisize.init('body', [980]);
+
+        /* Change links */
         $('section a, #posts h3 a').click(function() { 
             History.pushState(null, null, this.href);
             return false;
@@ -73,6 +77,7 @@
                 loadHome();
             }
 
+            /* Push data into GA */
             var url = '/' + State.url.split('<?php echo BASE_URL ?>')[1];
             _gaq.push(['_trackPageview', url]);
         });
