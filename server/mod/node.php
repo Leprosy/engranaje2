@@ -72,6 +72,15 @@ class node extends Module {
         }
 
         /* Slugify */
+        $data['slug'] = Utils::slugify($data['title']);
+
+        /* Check slug */
+        $db = Server::getDb();
+        $is = $db->node()->where('slug', $data['slug']);
+
+        if (count($is) >= 1) {
+            $data['slug'] .= '-#';
+        }
 
         /* Store */
         $this->save($data);
