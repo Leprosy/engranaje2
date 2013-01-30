@@ -61,6 +61,12 @@ class node extends Module {
 
     function post_index() {
         $data = $_POST;
+        $db = Server::getDb();
+
+        if (isset($data['terms'])) {
+            $terms = $data['terms'];
+            unset($data['terms']);
+        }
 
         /* Timestamping */
         $date = date('Y-m-d H:i:s');
@@ -75,15 +81,39 @@ class node extends Module {
         $data['slug'] = Utils::slugify($data['title']);
 
         /* Check slug */
-        $db = Server::getDb();
         $is = $db->node()->where('slug', $data['slug']);
 
         if (count($is) >= 1) {
-            $data['slug'] .= '-#';
+            $data['slug'] .= '-2';
         }
 
         /* Store */
-        $this->save($data);
+        if ($result = $this->save($data)) {
+            Server::sendHttpCode(201);
+
+            /* Terms */
+            if (isset($terms)) {
+                $terms = explode(',', $terms);
+
+                foreach ($terms as $term) {
+                    $term = trim($term);
+                    $term = $db->term()->where('slug', $term);
+
+                    if (count($term) > 0) {
+                        foreach ($term as $t) {
+                            $row = $db->node_term()
+                                      ->insert(array(
+                                              'node_id' => $result['id'],
+                                              'term_id' => $t['id']));
+                        }
+                    }
+                }
+            }
+
+            die(json_encode($result));
+        } else {
+            $this->sendError("invalid_insert", 400);
+        }
     }
 
     function post_update() {

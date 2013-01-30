@@ -32,10 +32,9 @@ class Module {
         $row = $db->$name()->insert($data);
 
         if ($row) {
-            Server::sendHttpCode(201);
-            die(json_encode(array('id' => $row['id'], 'http_code' => 201)));
+            return array('id' => $row['id'], 'http_code' => 201);
         } else {
-            $this->sendError("invalid_insert", 400);
+            return false;
         }
     }
 }

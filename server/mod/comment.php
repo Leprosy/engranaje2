@@ -41,16 +41,14 @@ class comment extends Module {
         $date = date('Y-m-d H:i:s');
         $data['published_at'] = $date;
 
-        /* Slugify */
-
         /* Spam detection */
         $data['status'] = 'published';
 
         $akismet = new Akismet(ENG_BASE_URL, ENG_AKISMET_API_KEY);
-        $akismet->setCommentAuthor($data['user']);
-        $akismet->setCommentAuthorEmail($data['mail']);
+        $akismet->setCommentAuthor(isset($data['user']) ? $data['user'] : '');
+        $akismet->setCommentAuthorEmail(isset($data['mail']) ? $data['mail'] : '');
         $akismet->setCommentAuthorURL('');
-        $akismet->setCommentContent($data['content']);
+        $akismet->setCommentContent(isset($data['content']) ? $data['content'] : '');
         $akismet->setPermalink('');
 
         if ($akismet->isCommentSpam()) {
@@ -58,7 +56,12 @@ class comment extends Module {
         }
 
         /* Store */
-        $this->save($data);
+        if ($result = $this->save($data)) {
+            Server::sendHttpCode(201);
+            die(json_encode($result));
+        } else {
+            $this->sendError("invalid_insert", 400);
+        }
     }
 
     function post_update() {
