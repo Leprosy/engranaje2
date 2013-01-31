@@ -42,6 +42,10 @@ class comment extends Module {
     function post_index() {
         $data = $_POST;
 
+        if ($field = $this->isInvalid($data)) {
+            $this->sendError("invalid_field : " . $field, 400);
+        }
+
         /* Timestamping */
         $date = date('Y-m-d H:i:s');
         $data['published_at'] = $date;
