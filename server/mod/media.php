@@ -74,7 +74,7 @@ class media extends Module {
         /* Uploading */
         if (isset($_FILES['file'])) {
             $name = ENG_UPLOADPATH . strtolower($_FILES['file']['name']);
-            $fname = pathinfo($name, PATHINFO_FILENAME);
+            $fname = ENG_UPLOADPATH . pathinfo($name, PATHINFO_FILENAME);
             $ext = pathinfo($name, PATHINFO_EXTENSION);
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $name)) {
