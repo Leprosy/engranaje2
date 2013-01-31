@@ -8,6 +8,10 @@ class BaseActions {
 
     function home($data) {
         $this->posts = self::getRequest('node?limit=10');
+
+        if (isset($this->posts->http_code)) {
+            $this->forwardTo('error404', $data);
+        }
     }
 
     function post($data) {
