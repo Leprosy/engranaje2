@@ -31,14 +31,21 @@ $content = '
 
 <script>
 function sendComment() {
-    $("#commentform .button").val("Enviando...");
-    var data = {};
-    $("#comment .comm_data").each(function(a,b) { data[b.id] = b.value });
-    $.post("'. SERVER_URL . '?module=comment", data, function(d) {
-        message("Su comentario se ha enviado y será publicado pronto."); 
-    })
-    .error(function() { message("Hubo un problema al enviar su comentario.<br />Intente mas tarde.") })
-    .complete(function() {$("#commentform .button").val("Enviar"); });
+    var val = true;
+    $("input").each(function(i, el) { if (el.value=="") { val = false;} });
+
+    if (!val) {
+        message("Complete los campos");
+    } else {
+        $("#commentform .button").val("Enviando...");
+        var data = {};
+        $("#comment .comm_data").each(function(a,b) { data[b.id] = b.value });
+        $.post("'. SERVER_URL . '/comment", data, function(d) {
+            message("Su comentario se ha enviado y será publicado pronto."); 
+        })
+        .error(function() { message("Hubo un problema al enviar su comentario.<br />Intente mas tarde.") })
+        .complete(function() {$("#commentform .button").val("Enviar"); });
+    }
 }
 </script>
 

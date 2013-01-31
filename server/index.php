@@ -47,5 +47,6 @@ try {
         throw new Exception('module_not_found ' . $module);
     }
 } catch(Exception $e) {
+    Server::sendHttpCode(400);
     die('ERROR: ' . $e->getMessage());
 }
