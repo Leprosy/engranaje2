@@ -2,6 +2,7 @@
 $url = BASE_URL . $_GET['url'];
 $content = '
 <article>
+    <img class="main" src="' . SERVER_URL . 'media/view/' . $this->post->media . '?s=915x300" />
     <h1>' . $this->post->title . '</h1>
     <p class="meta">Publicado el ' . $this->post->published_at . '</p>
     <section class="content">

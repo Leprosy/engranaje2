@@ -194,7 +194,7 @@ footer strong {
     #commentform {
         width: 450px;
     }
-    #front section.main img {
+    #front section.main img, img.main {
         width: 100%;
         margin-bottom: 1em;
         border:1px solid #666;

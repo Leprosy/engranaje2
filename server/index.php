@@ -12,7 +12,7 @@ define('ENG_UPLOADPATH', '/var/www/engranaje2/uploads/');
 
 define('ENG_BASE_URL', 'http://localhost/engranaje2/web/');
 define('ENG_AKISMET_API_KEY', '921702d611eb');
-define('ENG_IMAGESIZE', '128x128,400x200');
+define('ENG_IMAGESIZE', '128x128,400x200,915x300');
 
 include(ENG_APP_PATH . 'lib/Autoloader.php');
 spl_autoload_register(array('Autoloader', 'loadClass'));

@@ -7,11 +7,11 @@ class BaseActions {
     }
 
     function home($data) {
-        $this->posts = self::getRequest('?module=node&limit=10');
+        $this->posts = self::getRequest('node?limit=10');
     }
 
     function post($data) {
-        $post = self::getRequest('?module=node&id=' . $data['slug']);
+        $post = self::getRequest('node/index/' . $data['slug']);
 
         if (!isset($post->http_code)) {
             $this->post = $post[0];
@@ -29,7 +29,7 @@ class BaseActions {
     function error404() { /* call an ambulance */ }
 
     function term($data) {
-        $this->posts = self::getRequest('?module=node&limit=10&term=' . $data['term']);
+        $this->posts = self::getRequest('node?limit=10&term=' . $data['term']);
     }
 
     function doAction($action, $data) {

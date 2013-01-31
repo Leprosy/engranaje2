@@ -10,12 +10,16 @@
                 </header>
         
                 <section class="main">
-                    <?php foreach ($this->posts as $post) : ?>
+                    <?php foreach ($this->posts as $i => $post) : ?>
                         <article>
-                            <img src="http://lorempixel.com/400/200/technics/dummy<?php echo rand() * 12 ?>" />
+                            <?php if ($i < 3) : ?>
+                            <img src="<?php echo SERVER_URL ?>media/view/<?php echo $post->media ?>?s=400x200" />
+                            <?php endif; ?>
                             <h2><a href="<?php echo Html::permalink($post) ?>"><?php echo $post->title ?></a></h2>
                             <p class="meta">Publicado hace <?php echo Html::reldate($post->published_at) ?></p>
+                            <?php if ($i < 3) : ?>
                             <p><?php echo $post->description; ?></p>
+                            <?php endif; ?>
                         </article>
                     <?php endforeach; ?>
                 </section>
