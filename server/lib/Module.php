@@ -22,10 +22,6 @@ class Module {
     }
 
     function save($data) {
-        if ($field = $this->isInvalid($data)) {
-            $this->sendError("invalid_field : " . $field, 400);
-        }
-
         /* Store */
         $name = $this->name;
         $db = Server::getDb();

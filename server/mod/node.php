@@ -61,6 +61,11 @@ class node extends Module {
 
     function post_index() {
         $data = $_POST;
+
+        if ($field = $this->isInvalid($data)) {
+            $this->sendError("invalid_field : " . $field, 400);
+        }
+
         $db = Server::getDb();
 
         if (isset($data['terms'])) {

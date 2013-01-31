@@ -1,6 +1,6 @@
 <?php
 class media extends Module {
-    public $valid = array('user_id', 'title', 'type', 'content', 'description');
+    public $valid = array('user_id', 'title', 'type', 'description');
     public $name = 'media';
 
     function predispatch() {
@@ -46,6 +46,12 @@ class media extends Module {
     function post_index() {
         $data = $_POST;
 
+        if ($field = $this->isInvalid($data)) {
+            $this->sendError("invalid_field : " . $field, 400);
+        }
+
+        $db = Server::getDb();
+
         /* Timestamping */
         $date = date('Y-m-d H:i:s');
         $data['created_at'] = $date;
@@ -59,20 +65,37 @@ class media extends Module {
         $data['slug'] = Utils::slugify($data['title']);
 
         /* Check slug */
-        $db = Server::getDb();
         $is = $db->node()->where('slug', $data['slug']);
 
         if (count($is) >= 1) {
-            $data['slug'] .= '-#';
+            $data['slug'] .= '-2';
         }
 
+        /* Uploading */
+        if (isset($_FILES['file'])) {
+            $name = ENG_UPLOADPATH . strtolower($_FILES['file']['name']);
+            $fname = pathinfo($name, PATHINFO_FILENAME);
+            $ext = pathinfo($name, PATHINFO_EXTENSION);
+
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $name)) {
+                $Img = new Resize($name);
+                $Img->resizeImage(200, 200, 'crop');
+                $Img->saveImage($fname . "_200x200." . $ext, 100);
+                $Img->resizeImage(20, 20, 'crop');
+                $Img->saveImage($fname . "_20x20." . $ext, 100);
+                $data['content'] = strtolower($_FILES['file']['name']);
+            }
+        }
+
+        /*print_r($data);
+        print_r($_FILES);*/
         /* Store */
-        if ($result = $this->save($data)) {
+        /*if ($result = $this->save($data)) {
             Server::sendHttpCode(201);
             die(json_encode($result));
         } else {
             $this->sendError("invalid_insert", 400);
-        }
+        }*/
     }
 
     function post_update() {

@@ -8,9 +8,11 @@ define('ENG_DBUSER', 'root');
 define('ENG_DBPASS', 'leprosy');
 define('ENG_DBNAME', 'eng2');
 define('ENG_PAGELIMIT', 20);
+define('ENG_UPLOADPATH', '/var/www/engranaje2/uploads/');
 
 define('ENG_BASE_URL', 'http://localhost/engranaje2/web/');
 define('ENG_AKISMET_API_KEY', '921702d611eb');
+define('ENG_IMAGESIZE', 'small=128x128,medium=400x200');
 
 include(ENG_APP_PATH . 'lib/Autoloader.php');
 spl_autoload_register(array('Autoloader', 'loadClass'));
