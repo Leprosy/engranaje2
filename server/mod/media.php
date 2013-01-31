@@ -76,13 +76,17 @@ class media extends Module {
             $name = ENG_UPLOADPATH . strtolower($_FILES['file']['name']);
             $fname = ENG_UPLOADPATH . pathinfo($name, PATHINFO_FILENAME);
             $ext = pathinfo($name, PATHINFO_EXTENSION);
+            $sizes = explode(',', ENG_IMAGESIZE);
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $name)) {
                 $Img = new Resize($name);
-                $Img->resizeImage(200, 200, 'crop');
-                $Img->saveImage($fname . "_200x200." . $ext, 100);
-                $Img->resizeImage(20, 20, 'crop');
-                $Img->saveImage($fname . "_20x20." . $ext, 100);
+
+                foreach ($sizes as $size) {
+                    $d = explode('x', $size);
+                    $Img->resizeImage($d[0], $d[1], 'crop');
+                    $Img->saveImage($fname . "_" . $size . "." . $ext, 100);
+                }
+
                 $data['content'] = strtolower($_FILES['file']['name']);
             }
         }
