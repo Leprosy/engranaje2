@@ -1,19 +1,6 @@
 <?php
 /* Bootstrap */
-define('ENG_APP_PATH', dirname(__FILE__) . '/');
-define('ENG_REQUEST_METHOD', $_SERVER['REQUEST_METHOD']);
-define('ENG_REMOTE_ADDR', $_SERVER['REMOTE_ADDR']);
-define('ENG_DBHOST', 'localhost');
-define('ENG_DBUSER', 'root');
-define('ENG_DBPASS', 'leprosy');
-define('ENG_DBNAME', 'eng2');
-define('ENG_PAGELIMIT', 20);
-define('ENG_UPLOADPATH', '/var/www/engranaje2/uploads/');
-
-define('ENG_BASE_URL', 'http://localhost/engranaje2/web/');
-define('ENG_AKISMET_API_KEY', '921702d611eb');
-define('ENG_IMAGESIZE', '128x128,400x200,915x300');
-
+include('config.php');
 include(ENG_APP_PATH . 'lib/Autoloader.php');
 spl_autoload_register(array('Autoloader', 'loadClass'));
 
