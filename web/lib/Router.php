@@ -31,7 +31,7 @@ class Router {
 
         /* Not found */
         if (!$action) {
-            $action = '404';
+            $action = 'error404';
             $data = null;
         }
 
