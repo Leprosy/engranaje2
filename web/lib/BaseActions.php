@@ -19,7 +19,7 @@ class BaseActions {
 
         if (!isset($post->http_code)) {
             $this->post = $post[0];
-            $this->comments = self::getRequest('?module=comment&node_id=' . $post[0]->id);
+            $this->comments = self::getRequest('comment?node_id=' . $post[0]->id);
 
             if (isset($this->comments->http_code)) {
                 $this->comments = null;
@@ -34,6 +34,20 @@ class BaseActions {
 
     function term($data) {
         $this->posts = self::getRequest('node?limit=10&term=' . $data['term']);
+    }
+
+    function comment($data) {
+        if (!isset($_POST['node_id'])) {
+            $this->forwardTo('error404', $data);
+        } else {
+            $data = sprintf("node_id=%s&user=%s&mail=%s&content=%s",
+                        (isset($_POST['node_id']) ? $_POST['node_id'] : ''),
+                        (isset($_POST['user']) ? $_POST['user'] : ''),
+                        (isset($_POST['mail']) ? $_POST['mail'] : ''),
+                        (isset($_POST['content']) ? $_POST['content'] : ''));
+            $post = self::postRequest('comment', $data);
+            die();
+        }
     }
 
     function doAction($action, $data) {
@@ -72,5 +86,18 @@ class BaseActions {
         curl_close($ch);
 
         return $data; 
+    }
+
+    protected function postRequest($res, $data) {
+        $ch = curl_init();
+        $url = SERVER_URL . $res;
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, REQ_TIMEOUT);
+        $data = json_decode(curl_exec($ch));
+        curl_close($ch);
+
+        return $data;
     }
 }

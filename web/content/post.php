@@ -40,7 +40,7 @@ function sendComment() {
         $("#commentform .button").val("Enviando...");
         var data = {};
         $("#comment .comm_data").each(function(a,b) { data[b.id] = b.value });
-        $.post("'. SERVER_URL . '/comment", data, function(d) {
+        $.post("'. BASE_URL . 'comment", data, function(d) {
             message("Su comentario se ha enviado y será publicado pronto."); 
         })
         .error(function() { message("Hubo un problema al enviar su comentario.<br />Intente mas tarde.") })
