@@ -29,26 +29,6 @@ $content = '
     </div>
 </div>
 
-<script>
-function sendComment() {
-    var val = true;
-    $("input").each(function(i, el) { if (el.value=="") { val = false;} });
-
-    if (!val) {
-        message("Complete los campos");
-    } else {
-        $("#commentform .button").val("Enviando...");
-        var data = {};
-        $("#comment .comm_data").each(function(a,b) { data[b.id] = b.value });
-        $.post("'. BASE_URL . 'comment", data, function(d) {
-            message("Su comentario se ha enviado y será publicado pronto."); 
-        })
-        .error(function() { message("Hubo un problema al enviar su comentario.<br />Intente mas tarde.") })
-        .complete(function() {$("#commentform .button").val("Enviar"); });
-    }
-}
-</script>
-
 <div id="comments">
     <h3>' . count($this->comments) . ' comentario' . (count($this->comments)!=1 ? 's' : ''). '</h3>';
 if ($this->comments) {

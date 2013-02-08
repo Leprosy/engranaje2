@@ -49,7 +49,12 @@ class BaseActions {
                         (isset($_POST['mail']) ? $_POST['mail'] : ''),
                         (isset($_POST['content']) ? $_POST['content'] : ''));
             $post = self::postRequest('comment', $data);
-            die();
+
+            if (isset($post->http_code) && $post->http_code != '201') {
+                header('HTTP/1.1 400 Bad Request');
+            }
+
+            die(json_encode($post));
         }
     }
 
@@ -97,6 +102,7 @@ class BaseActions {
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, REQ_TIMEOUT);
         $data = json_decode(curl_exec($ch));
         curl_close($ch);
