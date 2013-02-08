@@ -30,7 +30,10 @@ class BaseActions {
         }
     }
 
-    function error404() { /* call an ambulance */ }
+    function error404() {
+        /* call an ambulance */
+        header('HTTP/1.1 404 Not Found');
+    }
 
     function term($data) {
         $this->posts = self::getRequest('node?limit=10&term=' . $data['term']);
