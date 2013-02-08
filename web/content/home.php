@@ -7,6 +7,7 @@
             <div id="front">
                 <header>
                     <h1><a href="<?php echo BASE_URL ?>">Lepr0systems</a></h1>
+                    <h3>QUIDQUID LATINE DICTUM SIT ALTUM VIDITUR</h3>
                 </header>
         
                 <section class="main">

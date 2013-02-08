@@ -46,6 +46,12 @@ header h1, div#posts > h3 {
 	color: #999;
 	text-transform: uppercase;
 }
+header h3 {
+	font-size: 70%;
+    text-shadow: 1px 1px 1px #fff;
+    color: #666;
+	text-align: center;
+}
 div#posts > h3 {
 	padding: 0.8em 0.5em 0;
 	text-align: right;
