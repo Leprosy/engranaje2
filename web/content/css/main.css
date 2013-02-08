@@ -126,11 +126,16 @@ section.main #comments article {
 	padding: 1em;
 	background-color: #cecece;
 	box-shadow: 1px 1px 4px #888;
+	overflow: auto;
 }
 section.main #comments article strong {
 	font-weight: bold;
 }
-
+section.main #comments article img {
+	float: left;
+	width: 32px;
+	margin-right: 0.8em;
+}
 section.main #comment input, section.main #comment textarea {
 	padding: 0.5em;
     border: 2px solid #ccc;
@@ -210,6 +215,9 @@ footer strong {
     }
     #commentform {
         width: 450px;
+    }
+    section.main #comments article img {
+        width: 64px;
     }
 }
 @media(min-width:980px) {

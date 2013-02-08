@@ -35,6 +35,7 @@ if ($this->comments) {
     foreach($this->comments as $comment) {
         $content .= '
             <article>
+                <img src="http://www.gravatar.com/avatar/' . md5(strtolower(trim($comment->mail))) . '?s=64&d=retro" />
                 <p><strong>' . $comment->user . '</strong> Dijo hace ' . Html::reldate($comment->published_at). '</p>
                 <p>'. $comment->content . '</p>
             </article>';
