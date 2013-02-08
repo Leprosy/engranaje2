@@ -2,6 +2,7 @@
 try {
     /* Bootstrap */
     include 'config.php';
+    include "routes.php";
     include 'lib/Autoloader.php';
 
     /* Get requested route */
