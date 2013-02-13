@@ -14,6 +14,16 @@ class BaseActions {
         }
     }
 
+    function rss($data) {
+        header('Content-Type: text/xml; charset=UTF-8');
+
+        $this->posts = self::getRequest('node?limit=30');
+
+        if (isset($this->posts->http_code)) {
+            $this->forwardTo('error404', $data);
+        }
+    }
+
     function post($data) {
         $post = self::getRequest('node/index/' . $data['slug']);
 

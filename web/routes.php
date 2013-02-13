@@ -18,6 +18,11 @@ $_engRoutes = array(
                 'action' => 'comment'
         ),
 
+        '/^rss/' =>
+        array(
+                'action' => 'rss'
+        ),
+
         '/^$/' =>
         array(
                 'action' => 'home'
