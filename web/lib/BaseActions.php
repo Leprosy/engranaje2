@@ -29,7 +29,7 @@ class BaseActions {
 
         if (!isset($post->http_code)) {
             $this->post = $post[0];
-            $this->comments = self::getRequest('comment?node_id=' . $post[0]->id);
+            $this->comments = self::getRequest('comment?node_id=' . $post[0]->id . '&limit=100');
 
             if (isset($this->comments->http_code)) {
                 $this->comments = null;

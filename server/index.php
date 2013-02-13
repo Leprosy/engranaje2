@@ -1,5 +1,7 @@
 <?php
 /* Bootstrap */
+session_start();
+if (isset($_GET['debug'])) print_r($_SESSION);
 include('config.php');
 include(ENG_APP_PATH . 'lib/Autoloader.php');
 spl_autoload_register(array('Autoloader', 'loadClass'));
@@ -34,6 +36,19 @@ try {
 
         /* Action requested */
         if (method_exists($M, $action)) {
+            /* Trottling */
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $act = $module . '/' . $action;
+            
+            if (!isset($_SESSION[$ip])) { $_SESSION[$ip] = array(); }
+            if (!isset($_SESSION[$ip][$act])) {
+                $_SESSION[$ip][$act] = array('num' => 0, 'first' => time());
+            }
+
+            $_SESSION[$ip][$act]['num'] = $_SESSION[$ip][$act]['num'] + 1;
+            $_SESSION[$ip][$act]['current'] = time();
+
+            /* Do the request action */
             $M->$action();
         } else {
             throw new Exception('action_not_found ' . $action);
