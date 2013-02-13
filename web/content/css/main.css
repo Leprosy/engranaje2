@@ -199,6 +199,10 @@ footer strong {
     top:1px;
 }
 
+small {
+	font-size: 80%;
+}
+
 
 /* MQ */
 @media(min-width:480px) {

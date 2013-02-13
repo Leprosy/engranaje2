@@ -36,8 +36,8 @@ if ($this->comments) {
         $content .= '
             <article>
                 <img src="http://www.gravatar.com/avatar/' . md5(strtolower(trim($comment->mail))) . '?s=64&d=retro" />
-                <p><strong>' . $comment->user . '</strong> Dijo hace ' . Html::reldate($comment->published_at). '</p>
-                <p>'. $comment->content . '</p>
+                <p><strong>' . $comment->user . '</strong> <small>dijo hace ' . Html::reldate($comment->published_at). ' : </small></p>
+                <p>'. nl2br(strip_tags($comment->content)) . '</p>
             </article>';
     }
 }
