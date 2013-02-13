@@ -37,6 +37,7 @@ try {
         /* Action requested */
         if (method_exists($M, $action)) {
             /* Trottling */
+            $fail = false;
             $ip = $_SERVER['REMOTE_ADDR'];
             $act = $module . '/' . $action;
             
@@ -48,7 +49,22 @@ try {
             $_SESSION[$ip][$act]['num'] = $_SESSION[$ip][$act]['num'] + 1;
             $_SESSION[$ip][$act]['current'] = time();
 
+            /* Limits */
+            if ($act == 'node/get_index' && $_SESSION[$ip][$act]['num'] > 4) {
+                $fail = true;
+            }
+
+            /* Reset */
+            if ($_SESSION[$ip][$act]['current'] - $_SESSION[$ip][$act]['first'] > 10) {
+                $_SESSION[$ip][$act]['first'] = time();
+                $_SESSION[$ip][$act]['num'] = 0;
+            }
+
             /* Do the request action */
+            if ($fail) {
+                throw new Exception('access_denied_too_many_hits');
+            }
+
             $M->$action();
         } else {
             throw new Exception('action_not_found ' . $action);
