@@ -51,6 +51,7 @@ class comment extends Module {
         $data['published_at'] = $date;
 
         /* Spam detection */
+        $data['ip'] = $_SERVER['REMOTE_ADDR'];
         $data['status'] = 'published';
 
         $akismet = new Akismet(ENG_BASE_URL, ENG_AKISMET_API_KEY);

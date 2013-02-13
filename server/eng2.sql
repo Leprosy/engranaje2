@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `content` text COLLATE utf8_spanish_ci NOT NULL,
   `status` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `karma` smallint(6) NOT NULL,
+  `ip` varchar(15) NOT NULL,
   `published_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
