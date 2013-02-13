@@ -21,6 +21,10 @@
             <description><?php echo $post->description; ?></description>
             <link><?php echo Html::permalink($post) ?></link>
             <guid><?php echo $post->slug ?></guid>
+            <author>Miguel Rojas</author>
+            <?php foreach ($post->terms as $term) : ?>
+            <category><?php echo $term->name ?></category>
+            <?php endforeach; ?>
             <pubDate><?php echo date(DATE_RSS, strtotime($post->published_at)); ?></pubDate>
         </item>
         <?php endforeach; ?>
