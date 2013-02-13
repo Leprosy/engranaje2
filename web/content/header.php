@@ -13,6 +13,8 @@
     <script src="<?php echo BASE_URL ?>content/js/jquery.js"></script>
     <script src="<?php echo BASE_URL ?>content/js/history.js"></script>
 
+    <link rel="alternate" type="application/rss+xml" title="Leprosystems RSS" href="http://blog.l3pro.com/rss/" />
+    
     <!-- Analystics :) -->
     <script type="text/javascript">
       var _gaq = _gaq || [];
