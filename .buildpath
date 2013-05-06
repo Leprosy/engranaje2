@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <buildpath>
-	<buildpathentry kind="src" path="classes"/>
-	<buildpathentry kind="src" path="config"/>
-	<buildpathentry kind="src" path="controllers"/>
-	<buildpathentry kind="src" path="lib"/>
-	<buildpathentry kind="src" path="views/error"/>
-	<buildpathentry kind="src" path="views/home"/>
-	<buildpathentry kind="src" path="views/layouts"/>
-	<buildpathentry kind="src" path="views/login"/>
-	<buildpathentry kind="src" path="views/post"/>
-	<buildpathentry kind="src" path="webroot"/>
+	<buildpathentry kind="src" path=""/>
 	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
 </buildpath>

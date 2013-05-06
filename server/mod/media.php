@@ -3,8 +3,7 @@ class media extends Module {
     public $valid = array('user_id', 'title', 'type', 'description');
     public $name = 'media';
 
-    function predispatch() {
-    }
+    function predispatch() {}
 
     function get_index() {
         header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");

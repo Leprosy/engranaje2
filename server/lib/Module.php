@@ -33,4 +33,26 @@ class Module {
             return false;
         }
     }
+
+    function checkToken() {
+        if (isset($_POST['token'])) {
+            $token = $_POST['token'];
+            $db = Server::getDb();
+            $key  = $db->token()
+                       ->where('token', $token)
+                       ->order('expires_at DESC')
+                       ->limit(1)
+                       ->fetch();
+    
+            if ($key) {
+                $key = $key->toArray();
+
+                return strtotime($key['expires_at']) > time();
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
